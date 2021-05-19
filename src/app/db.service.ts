@@ -4,7 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 export class Book {
-  constructor(public ISBN: number, public title: string, public author: string, public dateRealased: number, public pages: number, public categories: string[]) { }
+  constructor(public ISBN: number, public title: string, public author: string, public dateReleased: number, public pages: number, public description: string, public categories: string[]) { }
 }
 
 @Injectable({

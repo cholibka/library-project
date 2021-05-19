@@ -1,0 +1,22 @@
+<mat-card class="mat-elevation-z4">
+    
+    <mat-card-title>{{book?.title}}</mat-card-title>
+    <mat-card-subtitle>{{book?.author}}</mat-card-subtitle>
+
+    <ng-container>
+        <img mat-card-image src="./../assets/img/bookCover.jpg" alt="empty book cover">
+    </ng-container>
+    <mat-card-content>
+        <p>
+            <strong>Date realeased: </strong> {{book?.dateReleased}}
+        </p>
+        <p>
+            <strong>Pages: </strong> {{book?.pages}}
+        </p>
+        <p>
+            <strong>Description: </strong> {{ (book.description.length > 100) ? (book?.description | slice:0:100)+'...':(book?.description)}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+</mat-card>
