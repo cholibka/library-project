@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, ViewChild  } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Book } from '../db.service';
 
 @Component({
   selector: 'app-book-details',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Input() book!: Book;
+  @ViewChild('content') content!: TemplateRef<any>;
+  
+  constructor(private modalService: NgbModal) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  open_modal() {
+    this.open(this.content);
   }
+
+  private open(content: TemplateRef<any>) {
+    this.modalService.open(content, { scrollable: true, size: 'lg' });
+  }
+
 
 }

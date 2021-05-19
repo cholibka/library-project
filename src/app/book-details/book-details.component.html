@@ -1,1 +1,39 @@
-<p>book-details works!</p>
+<ng-template #content let-modal> 
+    <div class="modal-content">
+        <div class="modal-header d-block">
+            <div class="d-flex">
+                <h1 class="modal-title">{{book?.title}}</h1>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+            <h3 class="modal-subtitle"><strong>Author:</strong> {{book?.author}}</h3>
+        </div>
+        <br />
+        <div class="modal-body marginTop">
+            <div class="row">
+                <div class="col justify-content-center">
+                    <img mat-card-image src="./../assets/img/bookCover.jpg" alt="empty book cover">
+                </div>
+                <div class="col justify-content-center">
+                    <p>
+                        <strong>Date realeased:</strong> {{book?.dateReleased}}
+                    </p>
+                    <p>
+                        <strong>Pages:</strong> {{book?.pages}}
+                    </p>
+                    <p class="one-line">
+                        <strong>Categories:</strong> 
+                        <span class="one-line" *ngFor="let item of book.categories; index as i; last as isLast">
+                        {{item}}<span class="one-line" *ngIf="!isLast">, </span>
+                        </span>
+                    <p>
+                        <strong>Description:</strong>{{ book.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+

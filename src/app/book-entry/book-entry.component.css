@@ -1,6 +1,6 @@
 mat-card {
     margin-bottom: 16px;
-    width: 250px;
+    width: 300px;
 }
 
 mat-card-title, mat-card-subtitle {
@@ -16,13 +16,18 @@ p {
 p > strong {
     margin-right: 6px;
 }
+
 img { 
     display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
 
 .one-line {
     display: inline;
+}
+
+button { 
+    align-content: right;
 }

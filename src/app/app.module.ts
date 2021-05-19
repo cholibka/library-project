@@ -13,6 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]

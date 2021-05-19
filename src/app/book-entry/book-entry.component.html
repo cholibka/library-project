@@ -3,9 +3,8 @@
     <mat-card-title>{{book?.title}}</mat-card-title>
     <mat-card-subtitle>{{book?.author}}</mat-card-subtitle>
 
-    <ng-container>
-        <img mat-card-image src="./../assets/img/bookCover.jpg" alt="empty book cover">
-    </ng-container>
+    <img mat-card-image src="./../assets/img/bookCover.jpg" alt="empty book cover">
+    
     <mat-card-content>
         <p>
             <strong>Date realeased:</strong> {{book?.dateReleased}}
@@ -23,5 +22,8 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
+        <button mat-button (click)="details.open_modal()">DETAILS</button>
     </mat-card-actions>
 </mat-card>
+
+<app-book-details #details [book]="book"></app-book-details>
