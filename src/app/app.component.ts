@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Book, DbService } from './db-service.service';
+import { Book, DbService } from './db.service';
 
 
 @Component({
@@ -14,5 +14,6 @@ export class AppComponent {
 
   constructor(private dbService: DbService) {
     this.data = dbService.getBooks();
+    console.log(this.data)
   }
 }

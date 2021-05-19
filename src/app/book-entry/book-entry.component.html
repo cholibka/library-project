@@ -1,0 +1,29 @@
+<mat-card class="mat-elevation-z4">
+    
+    <mat-card-title>{{book?.title}}</mat-card-title>
+    <mat-card-subtitle>{{book?.author}}</mat-card-subtitle>
+
+    <img mat-card-image src="./../assets/img/bookCover.jpg" alt="empty book cover">
+    
+    <mat-card-content>
+        <p>
+            <strong>Date realeased:</strong> {{book?.dateReleased}}
+        </p>
+        <p>
+            <strong>Pages:</strong> {{book?.pages}}
+        </p>
+        <p class="one-line">
+            <strong>Categories:</strong> 
+            <span class="one-line" *ngFor="let item of book.categories; index as i; last as isLast">
+            {{item}}<span class="one-line" *ngIf="!isLast">, </span>
+            </span>
+        <p>
+            <strong>Description:</strong>{{(book.description.length > 100) ?(book?.description | slice:0:100)+'...':(book?.description)}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="details.open_modal()">DETAILS</button>
+    </mat-card-actions>
+</mat-card>
+
+<app-book-details #details [book]="book"></app-book-details>

@@ -4,17 +4,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DbService } from './db-service.service';
+import { DbService } from './db.service';
+import { BookEntryComponent } from './book-entry/book-entry.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BookEntryComponent,
+    NavbarComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    FlexLayoutModule,
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]

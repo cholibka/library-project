@@ -1,5 +1,9 @@
-<ul>
-  <li *ngFor="let d of data | async">
-    Title: {{d.title}}
-  </li> 
-<ul>
+<app-navbar></app-navbar>
+<body>
+  <div fxLayout="row wrap" fxLayoutGap="15px grid" class="content">
+    <div *ngFor="let book of data | async">
+      <app-book-entry [book]="book"></app-book-entry>
+    </div>
+  </div>
+</body>
+    

@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 // Models
 
 export class Book {
-  constructor(public ISBN: number, public title: string, public author: string, public dateRealased: number, public pages: number, public categories: string[]) { }
+  constructor(public ISBN: number, public title: string, public author: string, public dateReleased: number, public pages: number, public description: string, public categories: string[]) { }
 }
 export class Category {
   constructor(public id: number, public name: string) { }
