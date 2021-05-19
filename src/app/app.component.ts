@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Book, DbService } from './db-service.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'library-project';
+  data: Observable<Book[]>;
+
+  constructor(private dbService: DbService) {
+    this.data = dbService.getBooks();
+  }
 }

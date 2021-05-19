@@ -1,0 +1,40 @@
+{
+  "books": [
+    {
+      "ISBN": 1,
+      "title": "Cień i kość",
+      "author": "Leigh Bardugo",
+      "dateReleased": 2010,
+      "pages": 320,
+      "categories": []
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Horror"
+    }
+  ],
+  "booksCategories": [
+    {
+      "bookISBN": 1,
+      "categoryId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@admin.com",
+      "password": "admin",
+      "isWorker": true
+    }
+  ],
+  "bookBorrowed": [
+    {
+      "bookISBN": 1,
+      "userId": 1
+    }
+  ]
+}
