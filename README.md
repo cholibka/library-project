@@ -1,14 +1,16 @@
 # LibraryProject
+Simple library Angular SPA (Single Page Application) with fake REST API Server as backend.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
+## Install dependencies
+
+Run `npm install -g @angular/cli` to install Angular CLI.  
+Run `npm install -g json-server` to install JSON-Server.  
+Run `npm install -g json-server-auth` to install JSON-Server-auth.  
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/` for the app. The app will automatically reload if you change any of the source files.  
+Run `json-server --watch db.json` for a fake REST API Server. It is avaliable under `http://localhost:3000/`.
 
 ## Build
 
@@ -22,6 +24,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Licence notice
+This project was created using:  
+[Angular CLI](https://github.com/angular/angular-cli) v. 12.0.0 powered by [Google](https://about.google/).  
+[JSON-Server](https://github.com/typicode/json-server) v. 0.16.3 powered by [typicode](https://github.com/typicode).  
+[JSON-Server-Auth](https://github.com/jeremyben/json-server-auth) v. 2.0.2 powered by [jeremyben](https://github.com/jeremyben).  
