@@ -14,5 +14,6 @@ export class AppComponent {
 
   constructor(private dbService: DbService) {
     this.data = dbService.getBooks();
+    console.log(this.data)
   }
 }

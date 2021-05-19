@@ -8,13 +8,18 @@
     </ng-container>
     <mat-card-content>
         <p>
-            <strong>Date realeased: </strong> {{book?.dateReleased}}
+            <strong>Date realeased:</strong> {{book?.dateReleased}}
         </p>
         <p>
-            <strong>Pages: </strong> {{book?.pages}}
+            <strong>Pages:</strong> {{book?.pages}}
         </p>
+        <p class="one-line">
+            <strong>Categories:</strong> 
+            <span class="one-line" *ngFor="let item of book.categories; index as i; last as isLast">
+            {{item}}<span class="one-line" *ngIf="!isLast">, </span>
+            </span>
         <p>
-            <strong>Description: </strong> {{ (book.description.length > 100) ? (book?.description | slice:0:100)+'...':(book?.description)}}
+            <strong>Description:</strong>{{(book.description.length > 100) ?(book?.description | slice:0:100)+'...':(book?.description)}}
         </p>
     </mat-card-content>
     <mat-card-actions>

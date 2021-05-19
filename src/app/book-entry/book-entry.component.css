@@ -9,6 +9,8 @@ mat-card-title, mat-card-subtitle {
 p {
     text-align: justify;
     text-justify: inter-word;
+    margin-bottom: 0px;
+    
 }
 
 p > strong {
@@ -19,4 +21,8 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
+}
+
+.one-line {
+    display: inline;
 }

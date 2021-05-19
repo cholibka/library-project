@@ -12,13 +12,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './navbar/navbar.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BookEntryComponent,
-    NavbarComponent
+    NavbarComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,
