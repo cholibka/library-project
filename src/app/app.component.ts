@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book, DbService } from './db.service';
 
@@ -16,4 +16,10 @@ export class AppComponent {
     this.data = dbService.getBooks();
     console.log(this.data)
   }
+
+  searchBooks(books: Observable<Book[]>) {
+    this.data = books;
+  }
+
+
 }

@@ -14,7 +14,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     FlexLayoutModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]
