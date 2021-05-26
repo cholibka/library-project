@@ -15,7 +15,7 @@
         <p class="one-line">
             <strong>Categories:</strong> 
             <span class="one-line" *ngFor="let item of book.categories; index as i; last as isLast">
-            {{item}}<span class="one-line" *ngIf="!isLast">, </span>
+            {{item.name}}<span class="one-line" *ngIf="!isLast">, </span>
             </span>
         <p>
             <strong>Description:</strong>{{(book.description.length > 100) ?(book?.description | slice:0:100)+'...':(book?.description)}}
@@ -23,7 +23,7 @@
     </mat-card-content>
     <mat-card-actions>
         <button mat-button (click)="details.open_modal()">DETAILS</button>
-        <button mat-button color="primary" (click)="edit(book.ISBN)">EDIT</button>
+        <button mat-button color="primary" (click)="edit(book.id)">EDIT</button>
         <button mat-button color="warn" (click)="details.open_modal()">DELETE</button>
     </mat-card-actions>
 </mat-card>

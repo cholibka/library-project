@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 // Models
 
 export class Book {
-  constructor(public ISBN: number, public title: string, public author: string, public dateReleased: number, public pages: number, public description: string, public categories: string[], public quantity: number) { }
+  constructor(public id: number, public title: string, public author: string, public dateReleased: number, public pages: number, public description: string, public categories: Category[], public quantity: number) { }
 }
 export class Category {
   constructor(public id: number, public name: string) { }
@@ -85,7 +85,7 @@ export class DbService {
   // PUT | Update (replace)
 
   updateBook(book: Book): Observable<any> {
-    return this.http.put<Book>(this.url + 'books', book, this.httpOptions).pipe(
+    return this.http.put<Book>(this.url + 'books/' + book.id, book, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateBook'))
     );
   }

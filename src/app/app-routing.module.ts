@@ -6,7 +6,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 
 const routes: Routes = [
   {path: 'home', component: BooksListComponent},
-  {path: 'edit/:bookId', component: EditBookComponent},
+  {path: 'edit/:bookISBN', component: EditBookComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

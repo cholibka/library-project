@@ -12,7 +12,7 @@ export class BookEntryComponent implements OnInit {
 
   @Input('book') book!: Book;
 
-  constructor(private modalService: NgbModal, private router: Router ) { }
+  constructor(private modalService: NgbModal, private router: Router ) {}
 
   ngOnInit(): void { }
 

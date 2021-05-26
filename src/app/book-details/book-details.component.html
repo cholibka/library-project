@@ -25,7 +25,7 @@
                     <p class="one-line">
                         <strong>Categories:</strong> 
                         <span class="one-line" *ngFor="let item of book.categories; index as i; last as isLast">
-                        {{item}}<span class="one-line" *ngIf="!isLast">, </span>
+                        {{item.name}}<span class="one-line" *ngIf="!isLast">, </span>
                         </span>
                     <p>
                         <strong>Description: </strong>{{ book.description }}
