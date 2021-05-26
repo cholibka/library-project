@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Book, DbService } from '../db.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,20 +11,15 @@ import { Book, DbService } from '../db.service';
 })
 export class NavbarComponent implements OnInit {
 
-  @Output() booksEmitter = new EventEmitter<Observable<Book[]>>();
   books! : Observable<Book[]>;
-
   searchBook = this.formBuilder.group({query: ''})
 
-  constructor(private formBuilder: FormBuilder, private dbService: DbService) { 
+  constructor(private formBuilder: FormBuilder, private dbService: DbService, private router: Router ) { 
   }
 
   ngOnInit(): void {}
 
   onSubmit() : void {
-    console.log(this.searchBook.value.query)
-    this.books = this.dbService.searchBooks(this.searchBook.value.query);
-    console.log(this.books)
-    this.booksEmitter.emit(this.books)
+    this.router.navigate(['', this.searchBook.value.query]);
   }
 }

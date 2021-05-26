@@ -35,7 +35,7 @@ export class DbService {
 
   searchBooks(query: string): Observable<Book[]> {
     if(!query.trim()) {
-      return of([]); // If there isn't search query, return empty hero array
+      return of([]); // If there isn't search query, return empty books array
     }
     return this.http.get<Book[]>(this.url + 'books?q=' + query).pipe(
       catchError(this.handleError<Book[]>('searchBooks', []))

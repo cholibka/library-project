@@ -5,9 +5,10 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 
 const routes: Routes = [
-  {path: 'home', component: BooksListComponent},
+  {path: 'home', redirectTo: '/home/', pathMatch: 'full' },
+  {path: 'home/:query', component: BooksListComponent},
   {path: 'edit/:bookId', component: EditBookComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full' }
+  {path: '', redirectTo: '/home/', pathMatch: 'full' }
 ];
 
 @NgModule({

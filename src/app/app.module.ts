@@ -27,7 +27,7 @@ import { BooksListComponent } from './books-list/books-list.component';
     BookEntryComponent,
     NavbarComponent,
     BookDetailsComponent,
-    BookDefaultDirective
+    BookDefaultDirective,
     EditBookComponent,
     BooksListComponent,
   ],
