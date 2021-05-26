@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book, Category, DbService } from '../db.service';
@@ -13,6 +13,7 @@ export class EditBookComponent implements OnInit {
   book!: Book;
   Categories!: Category[];
   SelectedCategories: Category[] = [];
+  @Output() outputValues: EventEmitter<Book> = new EventEmitter();
 
   bookForm = this.formBuilder.group({
     title: new FormControl('', Validators.required),
@@ -63,7 +64,9 @@ export class EditBookComponent implements OnInit {
     this.book.categories = this.bookForm.value.categories;
     this.book.quantity = this.bookForm.value.quantity;
 
-    this.dbService.updateBook(this.book).subscribe();
+    this.dbService.updateBook(this.book).subscribe(_ => {
+      this.outputValues.emit(this.book);
+    });
     this.router.navigate(['/home']);
   }
 
