@@ -1,9 +1,6 @@
-<app-navbar (booksEmitter)="searchBooks($event)"></app-navbar>
-<body>
-  <div fxLayout="row wrap" fxLayoutGap="15px grid" class="content">
-    <div *ngFor="let book of data | async">
-      <app-book-entry [book]="book"></app-book-entry>
-    </div>
-  </div>
-</body>
+<app-navbar></app-navbar>
+<!-- (booksEmitter)="searchBooks($event)" -->
+
+<router-outlet></router-outlet>
+
     

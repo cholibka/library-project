@@ -17,6 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookDefaultDirective } from './directives/book-default.directive';
+import { EditBookComponent } from './edit-book/edit-book.component';
+import { BooksListComponent } from './books-list/books-list.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { BookDefaultDirective } from './directives/book-default.directive';
     NavbarComponent,
     BookDetailsComponent,
     BookDefaultDirective
+    EditBookComponent,
+    BooksListComponent,
   ],
   imports: [
     BrowserModule,
