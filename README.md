@@ -1,11 +1,10 @@
 # LibraryProject
-Simple library Angular SPA (Single Page Application) with fake REST API Server as backend.
+Simple books magazine Angular SPA (Single Page Application) with fake REST API Server as backend.
 
 ## Install dependencies
 
 Run `npm install -g @angular/cli` to install Angular CLI.  
-Run `npm install -g json-server` to install JSON-Server.  
-Run `npm install -g json-server-auth` to install JSON-Server-auth.  
+Run `npm install -g json-server` to install JSON-Server. 
 
 ## Development server
 
@@ -27,5 +26,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice.
 ### Licence notice
 This project was created using:  
 [Angular CLI](https://github.com/angular/angular-cli) v. 12.0.0 powered by [Google](https://about.google/).  
-[JSON-Server](https://github.com/typicode/json-server) v. 0.16.3 powered by [typicode](https://github.com/typicode).  
-[JSON-Server-Auth](https://github.com/jeremyben/json-server-auth) v. 2.0.2 powered by [jeremyben](https://github.com/jeremyben).  
+[JSON-Server](https://github.com/typicode/json-server) v. 0.16.3 powered by [typicode](https://github.com/typicode).
