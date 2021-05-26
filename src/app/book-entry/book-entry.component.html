@@ -23,6 +23,8 @@
     </mat-card-content>
     <mat-card-actions>
         <button mat-button (click)="details.open_modal()">DETAILS</button>
+        <button mat-button color="primary" (click)="edit(book.ISBN)">EDIT</button>
+        <button mat-button color="warn" (click)="details.open_modal()">DELETE</button>
     </mat-card-actions>
 </mat-card>
 

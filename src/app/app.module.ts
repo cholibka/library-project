@@ -16,6 +16,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditBookComponent } from './edit-book/edit-book.component';
+import { BooksListComponent } from './books-list/books-list.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     BookEntryComponent,
     NavbarComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    EditBookComponent,
+    BooksListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book, DbService } from './db.service';
 
@@ -8,18 +8,4 @@ import { Book, DbService } from './db.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'library-project';
-  data: Observable<Book[]>;
-
-  constructor(private dbService: DbService) {
-    this.data = dbService.getBooks();
-    console.log(this.data)
-  }
-
-  searchBooks(books: Observable<Book[]>) {
-    this.data = books;
-  }
-
-
-}
+export class AppComponent {}
