@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Book, DbService } from '../db.service';
 
@@ -9,14 +10,16 @@ import { Book, DbService } from '../db.service';
 })
 export class BooksListComponent implements OnInit {
 
-  data: Observable<Book[]>;
+  data!: Observable<Book[]>;
 
-  constructor(private dbService: DbService) {
-    this.data = dbService.getBooks();
-  }
-  
-  searchBooks(books: Observable<Book[]>) {
-    this.data = books;
+  constructor(private dbService: DbService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      if(params['query']){
+        this.data = dbService.searchBooks(params['query']);
+      }else{
+        this.data = dbService.getBooks();
+      }
+    });
   }
 
   ngOnInit(): void {

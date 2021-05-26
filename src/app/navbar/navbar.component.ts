@@ -20,6 +20,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() : void {
-    this.router.navigate(['', this.searchBook.value.query]);
+    this.router.navigate(['/home/', this.searchBook.value.query]);
   }
 }

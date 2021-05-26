@@ -27,7 +27,7 @@ export class EditBookComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private dbService: DbService, private formBuilder: FormBuilder) {
     dbService.getBooks().subscribe(books => {
       this.route.params.subscribe(params => {
-        this.book = books.find(b => b.id == params['bookISBN']) ?? new Book(0, "a", "a", 1, 1, "a", [new Category(0, "default")], 10);
+        this.book = books.find(b => b.id == params['bookId']) ?? new Book(0, "a", "a", 1, 1, "a", [new Category(0, "default")], 10);
         this.bookForm.get('title')?.setValue(this.book?.title);
         this.bookForm.get('author')?.setValue(this.book?.author);
         this.bookForm.get('dateReleased')?.setValue(this.book?.dateReleased);
