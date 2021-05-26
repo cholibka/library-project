@@ -1,5 +1,5 @@
 # LibraryProject
-Simple books magazine Angular SPA (Single Page Application) with fake REST API Server as backend.
+Simple books warehouse Angular SPA (Single Page Application) with fake REST API Server as backend.
 
 ## Install dependencies
 

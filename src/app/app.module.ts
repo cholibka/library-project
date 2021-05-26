@@ -16,6 +16,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookDefaultDirective } from './directives/book-default.directive';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -31,6 +32,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BookEntryComponent,
     NavbarComponent,
     BookDetailsComponent,
+    BookDefaultDirective
     EditBookComponent,
     BooksListComponent,
   ],
