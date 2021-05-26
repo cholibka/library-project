@@ -1,9 +1,9 @@
 <mat-card class="mat-elevation-z4">
-    
+
     <mat-card-title>{{book?.title}}</mat-card-title>
     <mat-card-subtitle>{{book?.author}}</mat-card-subtitle>
 
-    <img mat-card-image src="./../assets/img/bookCover.jpg" alt="empty book cover">
+    <img mat-card-image src="https://covers.openlibrary.org/b/isbn/{{book.ISBN}}-L.jpg?default=false" alt="empty book cover" bookImageDefault>
     
     <mat-card-content>
         <p>
