@@ -1,1 +1,57 @@
-<p>edit-book works!</p>
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput required formControlName="title" type="text">    
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Author</mat-label>
+        <input matInput required formControlName="author" type="text">    
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Date Released</mat-label>
+        <input matInput required formControlName="dateReleased" type="number">    
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Pages</mat-label>
+        <input matInput required formControlName="pages" type="number">    
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput required formControlName="description" type="text">    
+    </mat-form-field>
+
+    <br/>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Categories</mat-label>
+        <mat-select multiple formControlName="categories" required>
+            <mat-option *ngFor="let category of Categories" [value]="category" (change)="changeCategory($event)">
+                {{category.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Quantity</mat-label>
+        <input matInput required formControlName="quantity" type="number">    
+    </mat-form-field>
+
+    <br/>
+
+    <button mat-raised-button color="primary">Submit</button>
+
+</form>

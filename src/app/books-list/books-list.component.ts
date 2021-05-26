@@ -13,7 +13,6 @@ export class BooksListComponent implements OnInit {
 
   constructor(private dbService: DbService) {
     this.data = dbService.getBooks();
-    console.log(this.data)
   }
   
   searchBooks(books: Observable<Book[]>) {

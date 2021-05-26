@@ -19,6 +19,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookDefaultDirective } from './directives/book-default.directive';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { BooksListComponent } from './books-list/books-list.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
 
 
 @NgModule({
@@ -43,7 +48,11 @@ import { BooksListComponent } from './books-list/books-list.component';
     MatDialogModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    //MatOptionModule,
+    MatInputModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]
