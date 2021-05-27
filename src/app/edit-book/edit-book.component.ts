@@ -12,6 +12,9 @@ export class EditBookComponent implements OnInit {
 
   book!: Book;
   Categories!: Category[];
+  Authors!: Author[];
+  selectedAuthor!: Author;
+
   SelectedCategories: Category[] = [];
   @Output() outputValues: EventEmitter<Book> = new EventEmitter();
 
@@ -29,7 +32,7 @@ export class EditBookComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.book = books.find(b => b.id == params['bookId']) ?? new Book(0, "a", new Author(0, "a", "a"), 1, "a", [new Category(0, "default")], 10);
         this.bookForm.get('title')?.setValue(this.book?.title);
-        this.bookForm.get('author')?.setValue(this.book?.author.name);
+        //this.bookForm.get('author')?.setValue(`${this.book?.author.name} ${this.book?.author.surname}`);
         this.bookForm.get('dateReleased')?.setValue(this.book?.dateReleased);
         this.bookForm.get('description')?.setValue(this.book?.description);
         this.bookForm.get('quantity')?.setValue(this.book?.quantity);
@@ -45,13 +48,15 @@ export class EditBookComponent implements OnInit {
       this.bookForm.get('categories')?.setValue(this.SelectedCategories);
     });
 
+    dbService.getAuthors().subscribe(authors => {
+      this.Authors = authors;
+      this.selectedAuthor = authors.find(a => a.id == this.book.author.id) ?? new Author(0, "a", "a");
+      this.bookForm.get('author')?.setValue(this.selectedAuthor);
+    })
+
   }
 
   ngOnInit(): void {}
-
-  get categoryName() {
-    return this.bookForm.get('categories');
-  }
 
   onSubmit() {
     this.book.title = this.bookForm.value.title;
@@ -65,12 +70,6 @@ export class EditBookComponent implements OnInit {
       this.outputValues.emit(this.book);
     });
     this.router.navigate(['/home']);
-  }
-
-  changeCategory(e: any) {
-    this.categoryName!.setValue(e.target.value, {
-      onlySelf: true
-    })
   }
 
 }

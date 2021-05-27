@@ -15,9 +15,14 @@
         
             <mat-form-field appearance="fill">
                 <mat-label>Author</mat-label>
-                <input matInput required formControlName="author" type="text">    
+                <mat-select matInput required formControlName="author" required>
+                    <mat-option *ngFor="let author of Authors" [value]="author">
+                        {{author.name}} {{author.surname}}
+                    </mat-option> 
+                </mat-select>   
             </mat-form-field>
         
+            
             <br/>
         
             <mat-form-field appearance="fill">
@@ -26,7 +31,7 @@
             </mat-form-field>
         
             <br/>
-            
+
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
                 <textarea matInput required formControlName="description" type="text" rows="5"></textarea>
@@ -37,7 +42,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Categories</mat-label>
                 <mat-select multiple formControlName="categories" required>
-                    <mat-option *ngFor="let category of Categories" [value]="category" (change)="changeCategory($event)">
+                    <mat-option *ngFor="let category of Categories" [value]="category">
                         {{category.name}}
                     </mat-option>
                 </mat-select>
