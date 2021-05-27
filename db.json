@@ -2,19 +2,22 @@
   "books": [
     {
       "id": 9780345507006,
-      "title": "AAAAAAAAAAAAAA",
-      "author": "Leigh Bardugo",
-      "dateReleased": 2010,
-      "pages": 320,
+      "title": "AAAAAAAAAAAAA",
+      "author": {
+        "id": 1,
+        "name": "Jerzy",
+        "surname": "Jeżyk"
+      },
+      "dateReleased": 2020,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "categories": [
         {
-          "id": 1,
-          "name": "Horror"
-        },
-        {
           "id": 2,
           "name": "Romans"
+        },
+        {
+          "id": 3,
+          "name": "Komedia"
         }
       ],
       "quantity": 90
@@ -22,17 +25,46 @@
     {
       "id": 2,
       "title": "Cień i kość",
-      "author": "Leigh Bardugo",
+      "author": {
+        "id": 2,
+        "name": "Leigh",
+        "surname": "Bardugo"
+      },
       "dateReleased": 2019,
-      "pages": 320,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "categories": [
+        {
+          "id": 2,
+          "name": "Romans"
+        },
         {
           "id": 3,
           "name": "Komedia"
         }
       ],
       "quantity": 80
+    },
+    {
+      "id": 1111111111,
+      "title": "Barbie in the 12 Dancing Princesses",
+      "author": {
+        "id": 1,
+        "name": "Jerzy",
+        "surname": "Jeżyk"
+      },
+      "dateReleased": 2021,
+      "description": "AAAAAAAAAAAAA AAAAAAAAAAAA",
+      "categories": [
+        {
+          "id": 2,
+          "name": "Romans"
+        },
+        {
+          "id": 3,
+          "name": "Komedia"
+        }
+      ],
+      "quantity": 20
     }
   ],
   "categories": [
@@ -49,10 +81,16 @@
       "name": "Komedia"
     }
   ],
-  "booksCategories": [
+  "authors": [
     {
-      "bookISBN": 1,
-      "categoryId": 1
+      "id": 1,
+      "name": "Jerzy",
+      "surname": "Jeżyk"
+    },
+    {
+      "id": 2,
+      "name": "Leigh",
+      "surname": "Bardugo"
     }
   ]
 }

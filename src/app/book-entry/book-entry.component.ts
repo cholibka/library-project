@@ -21,7 +21,8 @@ export class BookEntryComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.router.navigate(['/edit', id]);
+    console.log(id)
+    this.router.navigate(['/editBook', id], {state: {data: this.book}});
   }
 
 }

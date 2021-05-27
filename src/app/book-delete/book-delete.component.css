@@ -2,3 +2,7 @@
     padding: 0;
     margin-bottom: 15px;
 }
+
+.closeButtonOverride{
+    margin: -1rem -1rem auto auto;
+}

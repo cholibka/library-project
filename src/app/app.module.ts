@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BookDeleteComponent } from './book-delete/book-delete.component';
+import { AddBookComponent } from './add-book/add-book.component';
 
 
 
@@ -37,6 +38,7 @@ import { BookDeleteComponent } from './book-delete/book-delete.component';
     BookDefaultDirective,
     EditBookComponent,
     BooksListComponent,
+    AddBookComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   searchBook = this.formBuilder.group({query: ''})
   lastUrl: string;
   url = 'home';
-  prohibited: string[] = ["edit"];
+  prohibited: string[] = ['edit', 'add'];
   
 
 
@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     this.lastUrl = this.url;
     try {
       this.url = urlTree.root.children.primary.segments[0].path;
-      if( this.prohibited.includes(this.url) ){
+      if( this.prohibited.some((val) => { return this.url.includes(val); }) ){
         this.url = this.lastUrl;
       }
     }

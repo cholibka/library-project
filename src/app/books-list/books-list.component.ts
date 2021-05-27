@@ -16,13 +16,12 @@ export class BooksListComponent implements OnInit {
     this.route.params.subscribe(params => {
       if(params['query']){
         this.data = dbService.searchBooks(params['query']);
-      }else{
+      } else {
         this.data = dbService.getBooks();
       }
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

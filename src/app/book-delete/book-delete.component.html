@@ -1,21 +1,21 @@
 <ng-template #content let-modal> 
     <div class="modal-content">
         <div class="modal-header d-block">
-            <div class="d-flex align-items-top">
-                <h1 class="modal-title">Delete <strong>{{book?.title}}</strong> ?</h1>
-                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <div class="d-flex">
+                <h1 class="modal-title">Are you sure you want to delete <br/> <strong>{{book?.title}}</strong>?</h1>
+                <button type="button" class="close closeButtonOverride" aria-label="Close" (click)="modal.dismiss('Cross click')">
                     <mat-icon>close</mat-icon>
                 </button>
             </div>
-            <h3 class="modal-subtitle"><strong>Author:</strong> {{book?.author}}</h3>
+            <h3 class="modal-subtitle"><strong>Author:</strong> {{book?.author?.name}} {{book?.author?.surname}}</h3>
         </div>
         <br />
-        <div class="fixMargins modal-body d-flex justify-content-center">
+        <div class="modal-body d-flex justify-content-center fixMargins ">
             <div class="row">
-                <div class="col alignLeft">
+                <div class="col">
                     <button mat-stroked-button color="warn" (click)="modal.dismiss('Cross click')">NO</button>
                 </div>
-                <div class="col alignRight">
+                <div class="col">
                     <button mat-raised-button color="primary" class="marginLeft" (click)="delete()">YES</button>
                 </div>
             </div>
