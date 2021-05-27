@@ -1,7 +1,7 @@
 
 <div fxLayout="row wrap" fxLayoutGap="50px" class="center">
     <div fxLayout="column">
-        <img mat-card-image src="https://covers.openlibrary.org/b/isbn/{{book.id}}-L.jpg?default=false" alt="empty book cover" bookImageDefault>
+        <img mat-card-image [src]="imagePath" alt="empty book cover" onerror="this.onerror=null;this.src='./assets/img/bookCover.jpg';">
     </div>
 
     <div fxLayout="column">

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Author, Book, Category, DbService } from '../db.service';
@@ -10,7 +10,9 @@ import { Author, Book, Category, DbService } from '../db.service';
 })
 export class EditBookComponent implements OnInit {
 
+  id: number = 0;
   book!: Book;
+  imagePath!: string;
   Categories!: Category[];
   Authors!: Author[];
   selectedAuthor!: Author;
@@ -30,7 +32,9 @@ export class EditBookComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private dbService: DbService, private formBuilder: FormBuilder) {
     dbService.getBooks().subscribe(books => {
       this.route.params.subscribe(params => {
-        this.book = books.find(b => b.id == params['bookId']) ?? new Book(0, "a", new Author(0, "a", "a"), 1, "a", [new Category(0, "default")], 10);
+        this.id = params['bookId'];
+        this.book = books.find(b => b.id == this.id) ?? new Book(0, "a", new Author(0, "a", "a"), 1, "a", [new Category(0, "default")], 10);
+        this.imagePath = "https://covers.openlibrary.org/b/isbn/" + this.book.id +"-L.jpg?default=false"
         this.bookForm.get('title')?.setValue(this.book?.title);
         this.bookForm.get('dateReleased')?.setValue(this.book?.dateReleased);
         this.bookForm.get('description')?.setValue(this.book?.description);
@@ -55,7 +59,9 @@ export class EditBookComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   onSubmit() {
     this.book.title = this.bookForm.value.title;
