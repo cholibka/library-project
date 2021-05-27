@@ -26,6 +26,7 @@ export class BookDeleteComponent implements OnInit {
 
   delete() {
     this.dbService.deleteBook(this.book.id).subscribe();
+    this.modalService.dismissAll();
   }
 
 }

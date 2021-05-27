@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
   
 
 
-  constructor(private formBuilder: FormBuilder, private dbService: DbService, private router: Router, private route: ActivatedRoute, private location: Location ) { 
+  constructor(private formBuilder: FormBuilder, private dbService: DbService, private router: Router, private location: Location ) { 
     let urlTree = this.router.parseUrl(this.location.path());
     this.lastUrl = this.url;
     try {

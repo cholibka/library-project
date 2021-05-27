@@ -13,11 +13,16 @@ export class BooksListComponent implements OnInit {
   data!: Observable<Book[]>;
 
   constructor(private dbService: DbService, private route: ActivatedRoute) {
+    this.loadBooks();
+  }
+
+  loadBooks()
+  {
     this.route.params.subscribe(params => {
       if(params['query']){
-        this.data = dbService.searchBooks(params['query']);
+        this.data = this.dbService.searchBooks(params['query']);
       } else {
-        this.data = dbService.getBooks();
+        this.data = this.dbService.getBooks();
       }
     });
   }
