@@ -14,8 +14,8 @@ export class EditBookComponent implements OnInit {
   Categories!: Category[];
   Authors!: Author[];
   selectedAuthor!: Author;
-
   SelectedCategories: Category[] = [];
+  
   @Output() outputValues: EventEmitter<Book> = new EventEmitter();
 
   bookForm = this.formBuilder.group({
@@ -32,7 +32,6 @@ export class EditBookComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.book = books.find(b => b.id == params['bookId']) ?? new Book(0, "a", new Author(0, "a", "a"), 1, "a", [new Category(0, "default")], 10);
         this.bookForm.get('title')?.setValue(this.book?.title);
-        //this.bookForm.get('author')?.setValue(`${this.book?.author.name} ${this.book?.author.surname}`);
         this.bookForm.get('dateReleased')?.setValue(this.book?.dateReleased);
         this.bookForm.get('description')?.setValue(this.book?.description);
         this.bookForm.get('quantity')?.setValue(this.book?.quantity);

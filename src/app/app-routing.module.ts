@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddBookComponent } from './add-book/add-book.component';
-import { AppComponent } from './app.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 
