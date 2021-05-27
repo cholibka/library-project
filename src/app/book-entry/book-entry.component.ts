@@ -22,7 +22,7 @@ export class BookEntryComponent implements OnInit {
 
   edit(id: number) {
     console.log(id)
-    this.router.navigate(['/edit', id]);
+    this.router.navigate(['/editBook', id]);
   }
 
 }

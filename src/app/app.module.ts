@@ -22,6 +22,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AddBookComponent } from './add-book/add-book.component';
 
 
 
@@ -35,6 +36,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BookDefaultDirective,
     EditBookComponent,
     BooksListComponent,
+    AddBookComponent,
   ],
   imports: [
     BrowserModule,
