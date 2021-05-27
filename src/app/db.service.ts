@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 // Models
 
@@ -25,12 +25,21 @@ export class Author {
 export class DbService {
 
   private url = 'http://localhost:3000/';
+  public notify = new BehaviorSubject<any>('');
+  notifyObservable$ = this.notify.asObservable();
+
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   
   constructor(private http: HttpClient) { }
 
+  // Refresh Component 
+  notifyOther(data: any) {
+    if (data) {
+        this.notify.next(data);
+    }
+  }
   // Utilities
 
   searchBooks(query: string): Observable<Book[]> {

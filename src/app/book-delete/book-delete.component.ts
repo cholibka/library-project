@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef, ViewChild  } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, ViewChild, Output, EventEmitter  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Book, DbService } from '../db.service';
 
@@ -11,6 +11,7 @@ export class BookDeleteComponent implements OnInit {
 
   @Input() book!: Book;
   @ViewChild('content') content!: TemplateRef<any>;
+  @Output() deleteBook: EventEmitter<Book> = new EventEmitter();
 
   constructor(private modalService: NgbModal, private dbService: DbService) { }
 
@@ -25,7 +26,12 @@ export class BookDeleteComponent implements OnInit {
   }
 
   delete() {
-    this.dbService.deleteBook(this.book.id).subscribe();
+    this.dbService.deleteBook(this.book.id).subscribe(_ => 
+      this.deleteBook.emit(this.book));
+    this.ngOnInit();
+    
+    this.dbService.notifyOther({refresh: true});
+    //window.location.reload();
     this.modalService.dismissAll();
   }
 

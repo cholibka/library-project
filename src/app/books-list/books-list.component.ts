@@ -27,6 +27,12 @@ export class BooksListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.dbService.notifyObservable$.subscribe(res => {
+      if(res.refresh){
+          this.data = this.dbService.getBooks();
+      }
+})
+  }
 
 }
