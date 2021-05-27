@@ -1,0 +1,24 @@
+<body>
+    <table class="table table-striped">
+      <caption>Categories List</caption>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Manage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of category | async">
+          <th scope="row">{{cat?.id}}</th>
+          <td>{{cat?.name}}</td>
+          <td>
+            <button mat-button color="primary">EDIT</button>
+            <button mat-button color="warn">DELETE</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+      
+  
