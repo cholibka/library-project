@@ -6,14 +6,14 @@ import { Observable, of } from 'rxjs';
 // Models
 
 export class Book {
-  constructor(public id: number, public title: string, public author: string, public dateReleased: number, public pages: number, public description: string, public categories: Category[], public quantity: number) { }
+  constructor(public id: number, public title: string, public author: Author, public dateReleased: number, public description: string, public categories: Category[], public quantity: number) { }
 }
 export class Category {
   constructor(public id: number, public name: string) { }
 }
 
-export class BookCategory {
-  constructor(public bookISBN: number, public categoryId: number) { }
+export class Author {
+  constructor(public id: number, public name: string, public surname: string) { }
 }
 
 
@@ -56,9 +56,9 @@ export class DbService {
     );
   }
 
-  addBookCategory(bookCategory: BookCategory): Observable<any> {
-    return this.http.post<BookCategory>(this.url + 'booksCategories', bookCategory, this.httpOptions).pipe(
-      catchError(this.handleError<any>('addBookCategory'))
+  addAuthor(author: Author): Observable<any> {
+    return this.http.post<Author>(this.url + 'authors', author, this.httpOptions).pipe(
+      catchError(this.handleError<any>('author'))
     );
   }
 
@@ -76,9 +76,9 @@ export class DbService {
     );
   }
 
-  getBooksCategories(): Observable<BookCategory[]> {
-    return this.http.get<BookCategory[]>(this.url + 'booksCategories').pipe(
-      catchError(this.handleError<BookCategory[]>('getBookCategories', []))
+  getAuthors(): Observable<Author[]> {
+    return this.http.get<Author[]>(this.url + 'authors').pipe(
+      catchError(this.handleError<Author[]>('getAuthors', []))
     );
   }
 
@@ -96,9 +96,9 @@ export class DbService {
     );
   }
 
-  updateBookCategory(bookCategory: BookCategory): Observable<any> {
-    return this.http.put<BookCategory>(this.url + 'booksCategories', bookCategory, this.httpOptions).pipe(
-      catchError(this.handleError<any>('updateBookCategory'))
+  updateAuthors(author: Author): Observable<any> {
+    return this.http.put<Author>(this.url + 'authors', author, this.httpOptions).pipe(
+      catchError(this.handleError<any>('updateAuthors'))
     );
   }
 
@@ -116,9 +116,9 @@ export class DbService {
     );
   }
 
-  deleteBookCategory(ISBN: number, categoryId: number): Observable<any> {
-    return this.http.delete<BookCategory>(this.url + 'booksCategories?bookISBN=' + ISBN + '&categoryId=' + categoryId, this.httpOptions).pipe(
-      catchError(this.handleError<any>('deleteBookCategory'))
+  deleteAuthor(id: number): Observable<any> {
+    return this.http.delete<Author>(this.url + 'authors?id=' + id, this.httpOptions).pipe(
+      catchError(this.handleError<any>('deleteAuthor'))
     );
   }
 
