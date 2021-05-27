@@ -91,13 +91,13 @@ export class DbService {
   }
 
   updateCategory(category: Category): Observable<any> {
-    return this.http.put<Category>(this.url + 'categories', category, this.httpOptions).pipe(
+    return this.http.put<Category>(this.url + 'categories/' + category.id, category, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateCategory'))
     );
   }
 
   updateBookCategory(bookCategory: BookCategory): Observable<any> {
-    return this.http.put<BookCategory>(this.url + 'booksCategories', bookCategory, this.httpOptions).pipe(
+    return this.http.put<BookCategory>(this.url + 'booksCategories/', bookCategory, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateBookCategory'))
     );
   }
@@ -105,13 +105,13 @@ export class DbService {
   // DELETE | Delete
 
   deleteBook(ISBN: number): Observable<any> {
-    return this.http.delete<Book>(this.url + 'books?ISBN=' + ISBN, this.httpOptions).pipe(
+    return this.http.delete<Book>(this.url + 'books/' + ISBN, this.httpOptions).pipe(
       catchError(this.handleError<any>('deleteBook'))
     );
   }
 
   deleteCategory(id: number): Observable<any> {
-    return this.http.delete<Category>(this.url + 'categories?id=' + id, this.httpOptions).pipe(
+    return this.http.delete<Category>(this.url + 'categories/' + id, this.httpOptions).pipe(
       catchError(this.handleError<any>('deleteCategory'))
     );
   }

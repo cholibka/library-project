@@ -24,8 +24,9 @@
     <mat-card-actions>
         <button mat-button (click)="details.open_modal()">DETAILS</button>
         <button mat-button color="primary" (click)="edit(book.id)">EDIT</button>
-        <button mat-button color="warn" (click)="details.open_modal()">DELETE</button>
+        <button mat-button color="warn" (click)="delete.open_modal()">DELETE</button>
     </mat-card-actions>
 </mat-card>
 
 <app-book-details #details [book]="book"></app-book-details>
+<app-book-delete #delete [book]="book"></app-book-delete>

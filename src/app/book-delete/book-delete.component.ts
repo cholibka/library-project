@@ -1,18 +1,18 @@
 import { Component, OnInit, Input, TemplateRef, ViewChild  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Book } from '../db.service';
+import { Book, DbService } from '../db.service';
 
 @Component({
-  selector: 'app-book-details',
-  templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.css']
+  selector: 'app-book-delete',
+  templateUrl: './book-delete.component.html',
+  styleUrls: ['./book-delete.component.css']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDeleteComponent implements OnInit {
 
   @Input() book!: Book;
   @ViewChild('content') content!: TemplateRef<any>;
-  
-  constructor(private modalService: NgbModal) { }
+
+  constructor(private modalService: NgbModal, private dbService: DbService) { }
 
   ngOnInit(): void {}
 
@@ -22,6 +22,10 @@ export class BookDetailsComponent implements OnInit {
 
   private open(content: TemplateRef<any>) {
     this.modalService.open(content, { scrollable: true, size: 'lg' });
+  }
+
+  delete() {
+    this.dbService.deleteBook(this.book.id).subscribe();
   }
 
 }
