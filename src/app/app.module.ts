@@ -25,6 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BookDeleteComponent } from './book-delete/book-delete.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -57,8 +59,9 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
-    //MatOptionModule,
-    MatInputModule
+    MatTableModule,
+    MatInputModule,
+    MatSortModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]

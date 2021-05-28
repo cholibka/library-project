@@ -2,8 +2,20 @@ body {
     margin: 10px;
 }
 
+table {
+    width: 100%;
+}
+  
+th.mat-sort-header-sorted {
+    color: black;
+}
 
-
-tr {
+table {
     text-align: center;
 }
+
+.mat-sort-header-container {
+    display:flex;
+    justify-content:center;
+}
+  
