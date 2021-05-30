@@ -28,6 +28,8 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { AuthorsListComponent } from './authors-list/authors-list.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { EditAuthorComponent } from './edit-author/edit-author.component';
 
 
 
@@ -45,6 +47,8 @@ import { AuthorsListComponent } from './authors-list/authors-list.component';
     AddBookComponent,
     CategoriesListComponent,
     AuthorsListComponent,
+    EditCategoryComponent,
+    EditAuthorComponent,
   ],
   imports: [
     BrowserModule,

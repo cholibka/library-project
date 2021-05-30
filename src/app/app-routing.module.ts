@@ -5,6 +5,7 @@ import { AuthorsListComponent } from './authors-list/authors-list.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 const routes: Routes = [
   {path: 'home', redirectTo: '/home/', pathMatch: 'full' },

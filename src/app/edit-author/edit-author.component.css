@@ -1,0 +1,8 @@
+mat-form-field {
+    justify-content: center;
+    display: flex;
+}
+
+button {
+    float: right;
+ }

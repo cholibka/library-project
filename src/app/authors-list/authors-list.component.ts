@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Author, DbService } from '../db.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class AuthorsListComponent implements AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dbService: DbService) { 
+  constructor(private dbService: DbService, private modalService: NgbModal) { 
     dbService.getAuthors().subscribe(authors => {
       this.authors = authors;
       authors.forEach(element => {
@@ -30,7 +31,7 @@ export class AuthorsListComponent implements AfterViewInit {
     this.dbService.notifyObservable$.subscribe(res => {
       if(res.refresh) {
         this.dbService.getAuthors().subscribe(authors => {
-          this.authors = this.authors;
+          this.authors = authors;
         })
       }
     })
@@ -40,4 +41,7 @@ export class AuthorsListComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  open(author: Author) {
+    this.modalService.open(author, {scrollable: true, size: 'xl'});
+  }
 }
