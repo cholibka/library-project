@@ -27,6 +27,7 @@ import { AddBookComponent } from './add-book/add-book.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { AuthorsListComponent } from './authors-list/authors-list.component';
 
 
 
@@ -43,6 +44,7 @@ import { MatSortModule } from '@angular/material/sort';
     BooksListComponent,
     AddBookComponent,
     CategoriesListComponent,
+    AuthorsListComponent,
   ],
   imports: [
     BrowserModule,

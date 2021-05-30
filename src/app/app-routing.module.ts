@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddBookComponent } from './add-book/add-book.component';
+import { AuthorsListComponent } from './authors-list/authors-list.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
@@ -14,6 +15,10 @@ const routes: Routes = [
   //categories
   {path: 'categories', component: CategoriesListComponent},
   {path: 'category/add', component: CategoriesListComponent},
+  //authors
+  {path: 'authors', component: AuthorsListComponent},
+  {path: 'author/add', component: CategoriesListComponent},
+
   {path: '', redirectTo: '/home/', pathMatch: 'full' }
 ];
 

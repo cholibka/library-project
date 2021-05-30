@@ -1,0 +1,19 @@
+body {
+    margin: 10px;
+}
+
+table {
+    width: 100%;
+    text-align: center !important;
+}
+  
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+  
