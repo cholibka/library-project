@@ -14,29 +14,17 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CategoriesListComponent implements AfterViewInit {
   
   displayedColumns = ["id", "name", "manage"];
-  categories!: Category[];
-  dataSource = new MatTableDataSource(this.categories);
+  dataSource = new MatTableDataSource();
 
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private dbService: DbService, private router: Router, private modalService: NgbModal) { 
     dbService.getCategories().subscribe(categories => {
-      this.categories = categories;
       categories.forEach(element => {
         this.dataSource.data.push(element);
         this.dataSource._updateChangeSubscription();
         console.log(this.dataSource.data)
       });
-    });
-  }
-
-  ngOnInit(): void {
-    this.dbService.notifyObservable$.subscribe(res => {
-      if(res.refresh){
-        this.dbService.getCategories().subscribe(categories => {
-          this.categories = categories;
-        });
-      }
     });
   }
 

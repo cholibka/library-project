@@ -79,6 +79,14 @@
     {
       "id": 3,
       "name": "Komedia"
+    },
+    {
+      "id": 4,
+      "name": "Fantasy"
+    },
+    {
+      "id": 5,
+      "name": "Poezja"
     }
   ],
   "authors": [
@@ -91,6 +99,16 @@
       "id": 2,
       "name": "Leigh",
       "surname": "Bardugo"
+    },
+    {
+      "id": 3,
+      "name": "Stephen",
+      "surname": "King"
+    },
+    {
+      "id": 4,
+      "name": "George",
+      "surname": "Orwell"
     }
   ]
 }
