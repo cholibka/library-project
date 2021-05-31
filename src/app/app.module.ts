@@ -30,6 +30,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { AuthorsListComponent } from './authors-list/authors-list.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { EditAuthorComponent } from './edit-author/edit-author.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddAuthorComponent } from './add-author/add-author.component';
 
 
 
@@ -49,6 +51,8 @@ import { EditAuthorComponent } from './edit-author/edit-author.component';
     AuthorsListComponent,
     EditCategoryComponent,
     EditAuthorComponent,
+    AddCategoryComponent,
+    AddAuthorComponent,
   ],
   imports: [
     BrowserModule,

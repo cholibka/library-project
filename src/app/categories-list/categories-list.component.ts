@@ -47,6 +47,5 @@ export class CategoriesListComponent implements AfterViewInit {
   open(category: Category) {
     this.modalService.open(category, {scrollable: true, size: 'xl'});
   }
-
 }
 

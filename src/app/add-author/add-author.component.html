@@ -1,0 +1,19 @@
+<div class="main">
+    <mat-card class="mat-elevation-z4">
+        <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    Name:
+                </mat-label>
+                <input matInput required type="text" formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    Surname:
+                </mat-label>
+                <input matInput required type="text" formControlName="surname">
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="!authorForm.valid">Submit</button>
+        </form>
+    </mat-card> 
+</div>

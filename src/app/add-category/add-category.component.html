@@ -1,0 +1,14 @@
+<div class="main">
+    <mat-card class="mat-elevation-z4">
+        <form (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    Category name:
+                </mat-label>
+                <input matInput required type="text" [formControl]="categoryName" >
+            </mat-form-field>
+            <br/>
+            <button mat-raised-button color="primary" [disabled]="!categoryName.valid">Submit</button>
+        </form>
+    </mat-card> 
+</div>

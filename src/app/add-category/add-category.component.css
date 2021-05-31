@@ -1,0 +1,18 @@
+button {
+    float: right;
+ }
+
+ mat-card {
+     width: 20%;
+ }
+
+ .main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  mat-form-field {
+      width: 100%;
+  }
