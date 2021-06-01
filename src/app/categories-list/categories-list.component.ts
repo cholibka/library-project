@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category, DbService } from '../db.service';
 import { MatSort } from '@angular/material/sort';
@@ -14,7 +14,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CategoriesListComponent implements AfterViewInit {
   
   displayedColumns = ["id", "name", "manage"];
-  dataSource = new MatTableDataSource();
+  categories!: Category[];
+  dataSource = new MatTableDataSource(this.categories);
+
+  @Output() deleteCategory: EventEmitter<Category> = new EventEmitter();
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -34,6 +37,18 @@ export class CategoriesListComponent implements AfterViewInit {
 
   open(category: Category) {
     this.modalService.open(category, {scrollable: true, size: 'xl'});
+  }
+
+  delete(id: number) {
+    console.log(id)
+    const category = this.dataSource.data.find(el => el.id == id);
+    console.log(category);
+    this.dataSource.data.splice(id - 1, 1);
+
+    this.dbService.deleteCategory(category!.id).subscribe(_ => 
+      this.deleteCategory.emit(category));
+
+    this.dataSource._updateChangeSubscription();
   }
 }
 
