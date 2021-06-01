@@ -13,10 +13,10 @@
     </ng-container>
 
     <ng-container matColumnDef="manage">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Manage </th>
+      <th mat-header-cell *matHeaderCellDef scope="col"> Manage </th>
       <td mat-cell *matCellDef="let element"> 
-        <button mat-button color="primary" (click)="edit.open_modal()">EDIT</button>
-        <button mat-button color="warn" (click)="delete(element.id)">DELETE</button> 
+        <button mat-icon-button color="primary" (click)="edit.open_modal()"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="delete(element.id)"><mat-icon>delete</mat-icon></button> 
         <app-edit-category #edit [category]="element"></app-edit-category>
       </td>
     </ng-container>

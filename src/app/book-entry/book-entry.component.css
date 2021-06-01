@@ -3,9 +3,10 @@ mat-card {
     width: 300px;
 }
 
-mat-card-title, mat-card-subtitle, mat-card-actions {
+mat-card-title, mat-card-subtitle {
     text-align: center;
 }
+
 p {
     text-align: justify;
     text-justify: inter-word;
@@ -21,13 +22,13 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 85%;
 }
 
 .one-line {
     display: inline;
 }
 
-button { 
-    align-content: right;
+mat-card-actions {
+    text-align: right;
 }

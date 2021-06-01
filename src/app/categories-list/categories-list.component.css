@@ -15,3 +15,6 @@ table {
     justify-content:center;
 }
   
+th, td {
+    text-align: center !important;
+}

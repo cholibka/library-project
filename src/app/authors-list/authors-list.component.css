@@ -12,4 +12,8 @@ th.mat-sort-header-sorted {
     justify-content: center;
 }
 
+th, td {
+    text-align: center !important;
+}
+
   
