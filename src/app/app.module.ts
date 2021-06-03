@@ -34,9 +34,10 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddAuthorComponent } from './add-author/add-author.component';
 import { DeleteAuthorComponent } from './delete-author/delete-author.component';
 import { DeleteCategoryComponent } from './delete-category/delete-category.component';
-
-
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,11 @@ import { DeleteCategoryComponent } from './delete-category/delete-category.compo
     MatFormFieldModule,
     MatTableModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatToolbarModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]

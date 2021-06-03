@@ -1,45 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home/">Books warehouse</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="home/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="home/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Books
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="home/">Books List</a>
-          <a class="dropdown-item" href="book/add">Add new book</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="home/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="categories">Categories List</a>
-          <a class="dropdown-item" href="category/add">Add new category</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="home/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Authors
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="authors">Authors List</a>
-          <a class="dropdown-item" href="author/add">Add new author</a>
-        </div>
-      </li>
-      </ul>
-      <form [formGroup]="searchBook" (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" formControlName='query' >
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
+
+<mat-toolbar color="primary">
+  <button mat-button [routerLink]="['/home']"><mat-icon>book</mat-icon> Books warehouse</button>
+
+  <button mat-button [matMenuTriggerFor]="menuBooks">Books</button>
+  <mat-menu #menuBooks="matMenu">
+      <button mat-menu-item [routerLink]="['/home']">Books List</button>
+      <button mat-menu-item [routerLink]="['/book/add']">Add new book</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="menuCategories">Categories</button>
+  <mat-menu #menuCategories="matMenu">
+    <button mat-menu-item [routerLink]="['/categories']">Categories List</button>
+    <button mat-menu-item [routerLink]="['/category/add']">Add new category</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="menuAuthors">Authors</button>
+  <mat-menu #menuAuthors="matMenu">
+    <button mat-menu-item [routerLink]="['/authors']">Authors List</button>
+    <button mat-menu-item [routerLink]="['/author/add']">Add new author</button>
+  </mat-menu>
+
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+
+  <form [formGroup]="searchBook" (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" formControlName='query' >
+    <button mat-icon-button type="submit"><mat-icon>search</mat-icon></button>
+  </form>
+  </mat-toolbar >

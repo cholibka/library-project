@@ -1,7 +1,5 @@
-.btnRight {
-    float: right;
-}
-
 body {
-    margin: 10px;
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: 10px;
 }
