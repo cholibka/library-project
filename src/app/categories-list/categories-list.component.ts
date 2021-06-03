@@ -21,13 +21,23 @@ export class CategoriesListComponent implements AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dbService: DbService, private router: Router, private modalService: NgbModal) { 
-    dbService.getCategories().subscribe(categories => {
-      categories.forEach(element => {
-        this.dataSource.data.push(element);
-        this.dataSource._updateChangeSubscription();
-        console.log(this.dataSource.data)
-      });
+  constructor(private dbService: DbService, private router: Router, private modalService: NgbModal, private route: ActivatedRoute) { 
+    this.loadCategories();
+  }
+
+  loadCategories(){
+    this.route.params.subscribe(params => {
+      if(params['query']){
+        this.dbService.searchCategories(params['query']).subscribe(categories => {
+          this.dataSource.data = categories;
+          this.dataSource._updateChangeSubscription();
+        })
+      } else {
+        this.dbService.getCategories().subscribe(categories => {
+          this.dataSource.data = categories;
+          this.dataSource._updateChangeSubscription();
+        })
+      }
     });
   }
 
@@ -41,10 +51,10 @@ export class CategoriesListComponent implements AfterViewInit {
 
   delete(id: number) {
     console.log(id)
-    const category = this.dataSource.data.find(el => el.id == id);
+    let ix = 0;
+    const category = this.dataSource.data.find((el, idx) =>{ ix = idx; return el.id == id});
     console.log(category);
-    this.dataSource.data.splice(id - 1, 1);
-
+    this.dataSource.data.splice(ix, 1);
     this.dbService.deleteCategory(category!.id).subscribe(_ => 
       this.deleteCategory.emit(category));
 
