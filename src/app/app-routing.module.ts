@@ -17,9 +17,11 @@ const routes: Routes = [
   {path: 'book/add', component: AddBookComponent},
   //categories
   {path: 'categories', component: CategoriesListComponent},
+  {path: 'categories/:query', component: CategoriesListComponent},
   {path: 'category/add', component: AddCategoryComponent},
   //authors
   {path: 'authors', component: AuthorsListComponent},
+  {path: 'authors/:query', component: AuthorsListComponent},
   {path: 'author/add', component: AddAuthorComponent},
 
   {path: '', redirectTo: '/home/', pathMatch: 'full' }

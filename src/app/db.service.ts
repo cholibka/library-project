@@ -51,6 +51,24 @@ export class DbService {
     );
   }
 
+  searchAuthors(query: string): Observable<Author[]> {
+    if(!query.trim()) {
+      return of([]); // If there isn't search query, return empty books array
+    }
+    return this.http.get<Author[]>(this.url + 'authors?q=' + query).pipe(
+      catchError(this.handleError<Author[]>('searchAuthors', []))
+    );
+  }
+
+  searchCategories(query: string): Observable<Category[]> {
+    if(!query.trim()) {
+      return of([]); // If there isn't search query, return empty books array
+    }
+    return this.http.get<Category[]>(this.url + 'categories?q=' + query).pipe(
+      catchError(this.handleError<Category[]>('searchCategories', []))
+    );
+  }
+
   // POST | Create
 
   addBook(book: Book): Observable<any> {

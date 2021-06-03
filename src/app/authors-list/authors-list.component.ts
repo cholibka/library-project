@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from '@angu
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 import { Author, DbService } from '../db.service';
 
 @Component({
@@ -19,15 +20,25 @@ export class AuthorsListComponent implements AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dbService: DbService, private modalService: NgbModal) { 
-    dbService.getAuthors().subscribe(authors => {
-      console.log(authors)
-      authors.forEach(element => {
-        this.dataSource.data.push(element);
-        this.dataSource._updateChangeSubscription();
-        console.log(this.dataSource.data)
-      })
-    })
+  constructor(private dbService: DbService, private modalService: NgbModal, private route: ActivatedRoute) { 
+    this.loadAuthors();
+  }
+
+  loadAuthors()
+  {
+    this.route.params.subscribe(params => {
+      if(params['query']){
+        this.dbService.searchAuthors(params['query']).subscribe(authors => {
+          this.dataSource.data = authors;
+          this.dataSource._updateChangeSubscription();
+        })
+      } else {
+        this.dbService.getAuthors().subscribe(authors => {
+          this.dataSource.data = authors;
+          this.dataSource._updateChangeSubscription();
+        })
+      }
+    });
   }
 
   ngAfterViewInit() {
@@ -41,9 +52,11 @@ export class AuthorsListComponent implements AfterViewInit {
   delete(id: number) {
 
     console.log(id)
-    const author = this.dataSource.data.find(el => el.id == id);
+    let ix = 0;
+    const author = this.dataSource.data.find((el, idx) => {ix = idx; return el.id == id});
     console.log(author)
-    this.dataSource.data.splice(id - 1, 1);
+    console.log(ix)
+    this.dataSource.data.splice(ix, 1);
     this.dbService.deleteAuthor(author!.id).subscribe(_ => 
       this.deleteAuthor.emit(author));
 
