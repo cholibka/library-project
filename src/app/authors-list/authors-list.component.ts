@@ -49,6 +49,5 @@ export class AuthorsListComponent implements AfterViewInit {
 
     this.dataSource._updateChangeSubscription();
 
-
   }
 }

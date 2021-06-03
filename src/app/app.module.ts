@@ -32,6 +32,7 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { EditAuthorComponent } from './edit-author/edit-author.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddAuthorComponent } from './add-author/add-author.component';
+import { DeleteAuthorComponent } from './delete-author/delete-author.component';
 
 
 
@@ -53,6 +54,7 @@ import { AddAuthorComponent } from './add-author/add-author.component';
     EditAuthorComponent,
     AddCategoryComponent,
     AddAuthorComponent,
+    DeleteAuthorComponent,
   ],
   imports: [
     BrowserModule,
