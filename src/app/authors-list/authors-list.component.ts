@@ -55,24 +55,23 @@ export class AuthorsListComponent implements AfterViewInit {
   }
 
   openDelete(author: Author) {
-    this.dialog.open(DeleteAuthorComponent, {
+    const dialogRef = this.dialog.open(DeleteAuthorComponent, {
       panelClass: "dialog-responsive",
       data: author
+    });
+ 
+    dialogRef.afterClosed().subscribe(r => {
+      console.log(r)
+      if(r) 
+      {
+        let ix = 0;
+        const a = this.dataSource.data.find((el, idx) => {ix = idx; return el.id == r})
+        this.dataSource.data.splice(ix, 1);
+        this.dbService.deleteAuthor(a!.id).subscribe(_ => 
+          this.deleteAuthor.emit(a));
+
+        this.dataSource._updateChangeSubscription();
+      }
     })
-  }
-
-  delete(id: number) {
-
-    console.log(id)
-    let ix = 0;
-    const author = this.dataSource.data.find((el, idx) => {ix = idx; return el.id == id});
-    console.log(author)
-    console.log(ix)
-    this.dataSource.data.splice(ix, 1);
-    this.dbService.deleteAuthor(author!.id).subscribe(_ => 
-      this.deleteAuthor.emit(author));
-
-    this.dataSource._updateChangeSubscription();
-
   }
 }
