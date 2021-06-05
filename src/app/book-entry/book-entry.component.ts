@@ -19,7 +19,7 @@ export class BookEntryComponent {
   openDetails(): void {
     console.log(this.book)
     this.dialog.open(BookDetailsComponent, {
-      panelClass: "dialog-responsive",
+      panelClass: "dialog-details-responsive",
       data: this.book
     });
   }

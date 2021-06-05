@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild, TemplateRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, TemplateRef, Output, EventEmitter, Inject } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Author, DbService } from '../db.service';
 
@@ -8,9 +9,8 @@ import { Author, DbService } from '../db.service';
   templateUrl: './edit-author.component.html',
   styleUrls: ['./edit-author.component.css']
 })
-export class EditAuthorComponent implements OnInit {
+export class EditAuthorComponent {
 
-  @Input() author!: Author;
   @ViewChild('content') content!: TemplateRef<any>;
   @Output() outputValues: EventEmitter<Author> = new EventEmitter();
   
@@ -19,21 +19,11 @@ export class EditAuthorComponent implements OnInit {
     surname: new FormControl('', Validators.required)
   })
 
-  constructor(private modalService: NgbModal, private dbService: DbService,  private formBuilder: FormBuilder) { }
-
-  ngOnInit(): void {
-  }
-
-  open_modal() {
-    this.open(this.content);
-  }
-  
-  private open(content: TemplateRef<any>) {
-    this.modalService.open(content, { scrollable: true, size: 'sm' });
+  constructor(public dialogRef: MatDialogRef<EditAuthorComponent>, @Inject(MAT_DIALOG_DATA) public author: Author, private dbService: DbService,  private formBuilder: FormBuilder) { 
     this.authorForm.get('name')?.setValue(this.author.name);
     this.authorForm.get('surname')?.setValue(this.author.surname);
   }
-
+  
   onSubmit() {
     this.author.name = this.authorForm.value.name;
     this.author.surname = this.authorForm.value.surname;
@@ -41,7 +31,11 @@ export class EditAuthorComponent implements OnInit {
     this.dbService.updateAuthors(this.author).subscribe(_ => {
       this.outputValues.emit(this.author);
     })
-    this.modalService.dismissAll();
+    
+    setTimeout(() => {
+      this.dbService.notifyOther({refresh: true})}, 500
+      );
+    this.dialogRef.close();
 
   }
 

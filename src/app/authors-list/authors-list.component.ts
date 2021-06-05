@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Author, DbService } from '../db.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteAuthorComponent } from '../delete-author/delete-author.component';
+import { EditAuthorComponent } from '../edit-author/edit-author.component';
 
 @Component({
   selector: 'app-authors-list',
@@ -20,7 +22,7 @@ export class AuthorsListComponent implements AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dbService: DbService, private modalService: NgbModal, private route: ActivatedRoute) { 
+  constructor(private dbService: DbService, private dialog: MatDialog, private route: ActivatedRoute) { 
     this.loadAuthors();
   }
 
@@ -45,8 +47,18 @@ export class AuthorsListComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  open(author: Author) {
-    this.modalService.open(author, {scrollable: true, size: 'xl'});
+  openEdit(author: Author) {
+    this.dialog.open(EditAuthorComponent, {
+      panelClass: "dialog-responsive",
+      data: author
+    })
+  }
+
+  openDelete(author: Author) {
+    this.dialog.open(DeleteAuthorComponent, {
+      panelClass: "dialog-responsive",
+      data: author
+    })
   }
 
   delete(id: number) {

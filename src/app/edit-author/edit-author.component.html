@@ -1,31 +1,21 @@
-<ng-template #content let-modal> 
-    <div class="modal-content">
-        <div class="modal-header d-block">
-            <div class="d-flex">
-                <h1 class="modal-title">Editing <strong>{{author.name}} {{author.surname}}</strong>...</h1>
-                <button type="button" class="close closeButtonOverride" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <mat-icon>close</mat-icon>
-                </button>
-            </div>
+<h1 mat-dialog-title>Editing <strong>{{author.name}} {{author.surname}}</strong>...</h1>
+<div mat-dialog-content>
+    <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>
+                Name:
+            </mat-label>
+            <input matInput required type="text" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>
+                Surname:
+            </mat-label>
+            <input matInput required type="text" formControlName="surname">
+        </mat-form-field>
+        <div>
+            <button mat-raised-button color="primary" [disabled]="!authorForm.valid">Submit</button>
+            <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
         </div>
-        <div class="modal-body">
-            <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
-                <mat-form-field appearance="fill">
-                    <mat-label>
-                        Name:
-                    </mat-label>
-                    <input matInput required type="text" formControlName="name">
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>
-                        Surname:
-                    </mat-label>
-                    <input matInput required type="text" formControlName="surname">
-                </mat-form-field>
-                <button mat-raised-button color="primary" [disabled]="!authorForm.valid">Submit</button>
-            </form>
-        </div>    
-    </div>
-</ng-template>
-
-
+    </form>
+</div>
