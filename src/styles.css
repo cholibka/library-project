@@ -9,3 +9,13 @@ html, body, app-root, .app-frame {
     box-sizing: border-box;
     color: #e0e0e0;
 }
+
+.dialog-responsive {
+    width: 40%;
+}
+
+@media only screen and (max-width: 760px) {
+    .dialog-responsive {
+        width: 100%;
+    }
+}

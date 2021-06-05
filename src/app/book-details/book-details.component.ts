@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, TemplateRef, ViewChild  } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Inject  } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Book } from '../db.service';
 
 @Component({
@@ -7,21 +7,7 @@ import { Book } from '../db.service';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent {
 
-  @Input() book!: Book;
-  @ViewChild('content') content!: TemplateRef<any>;
-  
-  constructor(private modalService: NgbModal) { }
-
-  ngOnInit(): void {}
-
-  open_modal() {
-    this.open(this.content);
-  }
-
-  private open(content: TemplateRef<any>) {
-    this.modalService.open(content, { scrollable: true, size: 'lg' });
-  }
-
+  constructor(public dialogRef: MatDialogRef<BookDetailsComponent>, @Inject(MAT_DIALOG_DATA) public book: Book) { }
 }
