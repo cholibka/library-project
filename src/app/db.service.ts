@@ -2,9 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { StyleManagerService } from './style-manager.service';
+
+
+//Model for Themes
+export interface Option {
+  backgroundColor: string;
+  buttonColor: string;
+  headingColor: string;
+  label: string;
+  value: string;
+}
 
 // Models
-
 export class Book {
   constructor(public id: number, public title: string, public author: Author, public dateReleased: number, public description: string, public categories: Category[], public quantity: number) { }
 }
@@ -32,8 +42,19 @@ export class DbService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private styleManager: StyleManagerService) { }
 
+  //Themes
+  getThemeOptions(): Observable<Array<Option>> {
+    return this.http.get<Array<Option>>("assets/options.json");
+  }
+
+  setTheme(themeToSet: string) {
+    this.styleManager.setStyle(
+      "theme",
+      `node_modules/@angular/material/prebuilt-themes/${themeToSet}.css`
+    );
+  }
   // Refresh Component 
   notifyOther(data: any) {
     if (data) {

@@ -38,6 +38,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
+import { StyleManagerService } from './style-manager.service';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AddAuthorComponent,
     DeleteAuthorComponent,
     DeleteCategoryComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatExpansionModule,
     MatMenuModule
   ],
-  providers: [DbService],
+  providers: [DbService, StyleManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
