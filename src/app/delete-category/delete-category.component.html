@@ -1,25 +1,7 @@
-<ng-template #content let-modal> 
-    <div class="modal-content">
-        <div class="modal-header d-block">
-            <div class="d-flex">
-                <h1 class="modal-title">Are you sure you want to delete <br/> <strong> {{category.name}} </strong>?</h1>
-                <button type="button" class="close closeButtonOverride" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <mat-icon>close</mat-icon>
-                </button>
-            </div>
-        </div>
-        <br />
-        <div class="modal-body d-flex justify-content-center fixMargins">
-            <div class="row">
-                <div class="col">
-                    <button mat-raised-button color="warn" (click)="modal.dismiss('Cross click')">NO</button>
-                </div>
-                <div class="col">
-                    <button mat-raised-button color="primary" class="marginLeft" (click)="delete()">YES</button>
-                </div>
-            </div>
-        </div>  
-    </div>
-</ng-template>
+<h1 mat-dialog-title>Are you sure you want to delete <br/> <strong> {{category.name}}</strong>?</h1>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>NO</button>
+    <button mat-button (click)="delete()">YES</button>
+</mat-dialog-actions>
 
 

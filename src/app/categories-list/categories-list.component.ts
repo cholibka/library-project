@@ -56,22 +56,22 @@ export class CategoriesListComponent implements AfterViewInit {
   }
 
   openDelete(category: Category) {
-    this.dialog.open(DeleteCategoryComponent, {
+    const dialogRef = this.dialog.open(DeleteCategoryComponent, {
       panelClass: "dialog-responsive",
       data: category
+    });
+
+    dialogRef.afterClosed().subscribe(r => {
+      if(r) {
+        let ix = 0;
+        const c = this.dataSource.data.find((el, idx) =>{ ix = idx; return el.id == r});
+        this.dataSource.data.splice(ix, 1);
+        this.dbService.deleteCategory(c!.id).subscribe(_ => 
+          this.deleteCategory.emit(c));
+
+        this.dataSource._updateChangeSubscription();
+      }
     })
-  }
-
-  delete(id: number) {
-    console.log(id)
-    let ix = 0;
-    const category = this.dataSource.data.find((el, idx) =>{ ix = idx; return el.id == id});
-    console.log(category);
-    this.dataSource.data.splice(ix, 1);
-    this.dbService.deleteCategory(category!.id).subscribe(_ => 
-      this.deleteCategory.emit(category));
-
-    this.dataSource._updateChangeSubscription();
   }
 }
 

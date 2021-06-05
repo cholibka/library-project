@@ -12,13 +12,11 @@ import { Author, DbService } from '../db.service';
 export class DeleteAuthorComponent {
 
   @ViewChild('content') content!: TemplateRef<any>;
-  @Output() outputValues: EventEmitter<number> = new EventEmitter();
 
   constructor(public dialogRef: MatDialogRef<DeleteAuthorComponent>, @Inject(MAT_DIALOG_DATA) public author: Author) { }
 
   delete() {
-    this.outputValues.emit(this.author.id);
-    this.dialogRef.close();
+    this.dialogRef.close(this.author.id);
   }
 
 }
