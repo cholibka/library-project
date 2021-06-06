@@ -4,6 +4,9 @@ import { Category, DbService } from '../db.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EditCategoryComponent } from '../edit-category/edit-category.component';
+import { DeleteCategoryComponent } from '../delete-category/delete-category.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-categories-list',
@@ -21,7 +24,7 @@ export class CategoriesListComponent implements AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dbService: DbService, private router: Router, private modalService: NgbModal, private route: ActivatedRoute) { 
+  constructor(private dbService: DbService, private router: Router, private dialog: MatDialog, private route: ActivatedRoute) { 
     this.loadCategories();
   }
 
@@ -45,20 +48,30 @@ export class CategoriesListComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  open(category: Category) {
-    this.modalService.open(category, {scrollable: true, size: 'xl'});
+  openEdit(category: Category) {
+    this.dialog.open(EditCategoryComponent, {
+      panelClass: "dialog-responsive",
+      data: category
+    })
   }
 
-  delete(id: number) {
-    console.log(id)
-    let ix = 0;
-    const category = this.dataSource.data.find((el, idx) =>{ ix = idx; return el.id == id});
-    console.log(category);
-    this.dataSource.data.splice(ix, 1);
-    this.dbService.deleteCategory(category!.id).subscribe(_ => 
-      this.deleteCategory.emit(category));
+  openDelete(category: Category) {
+    const dialogRef = this.dialog.open(DeleteCategoryComponent, {
+      panelClass: "dialog-responsive",
+      data: category
+    });
 
-    this.dataSource._updateChangeSubscription();
+    dialogRef.afterClosed().subscribe(r => {
+      if(r) {
+        let ix = 0;
+        const c = this.dataSource.data.find((el, idx) =>{ ix = idx; return el.id == r});
+        this.dataSource.data.splice(ix, 1);
+        this.dbService.deleteCategory(c!.id).subscribe(_ => 
+          this.deleteCategory.emit(c));
+
+        this.dataSource._updateChangeSubscription();
+      }
+    })
   }
 }
 

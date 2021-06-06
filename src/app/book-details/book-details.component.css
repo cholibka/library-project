@@ -5,6 +5,14 @@ img {
     width: 80%;
 }
 
-marginTop {
-    margin-bottom: 15px;
+.mat-dialog-title {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 0%;
+}
+
+p {
+    font-size: medium;
 }

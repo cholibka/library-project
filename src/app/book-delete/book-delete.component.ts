@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, TemplateRef, ViewChild, Output, EventEmitter  } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, TemplateRef, ViewChild, Output, EventEmitter, Inject  } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Book, DbService } from '../db.service';
 
 @Component({
@@ -7,32 +7,20 @@ import { Book, DbService } from '../db.service';
   templateUrl: './book-delete.component.html',
   styleUrls: ['./book-delete.component.css']
 })
-export class BookDeleteComponent implements OnInit {
+export class BookDeleteComponent {
 
-  @Input() book!: Book;
   @ViewChild('content') content!: TemplateRef<any>;
   @Output() deleteBook: EventEmitter<Book> = new EventEmitter();
 
-  constructor(private modalService: NgbModal, private dbService: DbService) { }
-
-  ngOnInit(): void {}
-
-  open_modal() {
-    this.open(this.content);
-  }
-
-  private open(content: TemplateRef<any>) {
-    this.modalService.open(content, { scrollable: true, size: 'lg' });
-  }
+  constructor(public dialogRef: MatDialogRef<BookDeleteComponent>, @Inject(MAT_DIALOG_DATA) public book: Book, private dbService: DbService) { }
 
   delete() {
     this.dbService.deleteBook(this.book.id).subscribe(_ => 
       this.deleteBook.emit(this.book));
-    this.ngOnInit();
     
-    this.dbService.notifyOther({refresh: true});
-    //window.location.reload();
-    this.modalService.dismissAll();
+    setTimeout(() => {
+      this.dbService.notifyOther({refresh: true})}, 500
+      );
+    this.dialogRef.close();
   }
-
 }

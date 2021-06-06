@@ -1,8 +1,13 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
+<<<<<<< HEAD
 import { Book, DbService } from '../db.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+=======
+import { Book, DbService, Option } from '../db.service';
+import { Router, ActivatedRoute } from '@angular/router';
+>>>>>>> themes
 import { Location } from '@angular/common';
 
 @Component({
@@ -12,6 +17,7 @@ import { Location } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
+  options$: Observable<Array<Option>> = this.dbService.getThemeOptions();
   books! : Observable<Book[]>;
   searchBook = this.formBuilder.group({query: ''})
   lastUrl: string;
@@ -40,7 +46,13 @@ export class NavbarComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dbService.setTheme("deeppurple-amber");
+  }
+
+  themeChangeHandler(themeToSet: string) {
+    this.dbService.setTheme(themeToSet);
+  }
 
   onSubmit() : void {
     this.router.navigate([`/${this.url}/`, this.searchBook.value.query]);

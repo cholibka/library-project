@@ -1,39 +1,35 @@
-<ng-template #content let-modal> 
-    <div class="modal-content">
-        <div class="modal-header d-block">
-            <div class="d-flex">
-                <h1 class="modal-title">{{book?.title}}</h1>
-                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <mat-icon>close</mat-icon>
-                </button>
-            </div>
-            <h3 class="modal-subtitle"><strong>Author:</strong> {{book.author.name}} {{book.author.surname}}</h3>
+
+<div mat-dialog-title>
+    <h1>
+        {{book.title}}
+    </h1>
+    <h2>{{book.author.name}} {{book.author.surname}}</h2>
+</div>
+<div mat-dialog-content>
+    <div class="row">
+        <div class="col justify-content-center">
+            <img src="https://covers.openlibrary.org/b/isbn/{{book.id}}-L.jpg?default=false" alt="empty book cover" bookImageDefault>
         </div>
-        <br />
-        <div class="modal-body marginTop">
-            <div class="row">
-                <div class="col justify-content-center">
-                    <img mat-card-image src="https://covers.openlibrary.org/b/isbn/{{book.id}}-L.jpg?default=false" alt="empty book cover" bookImageDefault>
-                </div>
-                <div class="col justify-content-center">
-                    <p>
-                        <strong>Date realeased:</strong> {{book?.dateReleased}}
-                    </p>
-                    <p class="one-line">
-                        <strong>Categories:</strong> 
-                        <span class="one-line" *ngFor="let item of book.categories; index as i; last as isLast">
-                        {{item.name}}<span class="one-line" *ngIf="!isLast">, </span>
-                        </span>
-                    <p>
-                        <strong>Description: </strong>{{ book.description }}
-                    </p>
-                    <p>
-                        <strong>Quantity: </strong>{{ book.quantity }}
-                    </p>
-                </div>
-            </div>
+        <div class="col justify-content-center">
+            <p>
+                <strong>Date realeased:</strong> {{book?.dateReleased}}
+            </p>
+            <p class="one-line">
+                <strong>Categories:</strong> 
+                <span class="one-line" *ngFor="let item of book.categories; index as i; last as isLast">
+                    {{item.name}}<span class="one-line" *ngIf="!isLast">, </span>
+                </span>
+                <p>
+                    <strong>Description: </strong>{{ book.description }}
+                </p>
+                <p>
+                    <strong>Quantity: </strong>{{ book.quantity }}
+            </p>
         </div>
     </div>
-</ng-template>
+</div>
 
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Go back</button>
+</mat-dialog-actions>
 

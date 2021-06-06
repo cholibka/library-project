@@ -1,23 +1,35 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Book, DbService } from '../db.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input } from '@angular/core';
+import { Book} from '../db.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { BookDetailsComponent } from '../book-details/book-details.component';
+import { BookDeleteComponent } from '../book-delete/book-delete.component';
 
 @Component({
   selector: 'app-book-entry',
   templateUrl: './book-entry.component.html',
   styleUrls: ['./book-entry.component.css']
 })
-export class BookEntryComponent implements OnInit {
+export class BookEntryComponent {
 
   @Input('book') book!: Book;
 
-  constructor(private modalService: NgbModal, private router: Router ) {}
+  constructor(private dialog: MatDialog, private router: Router ) {}
 
-  ngOnInit(): void { }
+  openDetails(): void {
+    console.log(this.book)
+    this.dialog.open(BookDetailsComponent, {
+      panelClass: "dialog-details-responsive",
+      data: this.book
+    });
+  }
 
-  open(book: Book) {
-    this.modalService.open(book, {scrollable: true, size: 'xl'});
+  openDelete(): void {
+    console.log(this.book)
+    this.dialog.open(BookDeleteComponent, {
+      panelClass: "dialog-responsive",
+      data: this.book
+    });
   }
 
   edit(id: number) {

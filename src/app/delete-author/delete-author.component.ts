@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild, TemplateRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, TemplateRef, Output, EventEmitter, Inject } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Author, DbService } from '../db.service';
 
@@ -8,28 +9,14 @@ import { Author, DbService } from '../db.service';
   templateUrl: './delete-author.component.html',
   styleUrls: ['./delete-author.component.css']
 })
-export class DeleteAuthorComponent implements OnInit {
+export class DeleteAuthorComponent {
 
-  @Input() author!: Author;
   @ViewChild('content') content!: TemplateRef<any>;
-  @Output() outputValues: EventEmitter<number> = new EventEmitter();
 
-  constructor(private modalService: NgbModal, private dbService: DbService,  private formBuilder: FormBuilder) { }
+  constructor(public dialogRef: MatDialogRef<DeleteAuthorComponent>, @Inject(MAT_DIALOG_DATA) public author: Author) { }
 
-  ngOnInit(): void {
-  }
-
-  open_modal() {
-    this.open(this.content);
-  }
-
-  private open(content: TemplateRef<any>) {
-    this.modalService.open(content, { scrollable: true, size: 'lg' });
-  }
-
-  delete(){
-    this.outputValues.emit(this.author.id);
-    this.modalService.dismissAll();
+  delete() {
+    this.dialogRef.close(this.author.id);
   }
 
 }

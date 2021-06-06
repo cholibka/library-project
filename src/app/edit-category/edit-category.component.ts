@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Category, DbService } from '../db.service';
 
 @Component({
@@ -8,27 +8,16 @@ import { Category, DbService } from '../db.service';
   templateUrl: './edit-category.component.html',
   styleUrls: ['./edit-category.component.css']
 })
-export class EditCategoryComponent implements OnInit {
+export class EditCategoryComponent {
 
-  @Input() category!: Category;
   @ViewChild('content') content!: TemplateRef<any>;
   @Output() outputValues: EventEmitter<Category> = new EventEmitter();
 
   categoryName = new FormControl('');
   
-  constructor(private modalService: NgbModal, private dbService: DbService) { 
+  constructor(public dialogRef: MatDialogRef<EditCategoryComponent>, @Inject(MAT_DIALOG_DATA) public category: Category, private dbService: DbService) { 
   }
   
-  ngOnInit(): void {}
-  
-  open_modal() {
-    this.open(this.content);
-  }
-  
-  private open(content: TemplateRef<any>) {
-    this.modalService.open(content, { scrollable: true, size: 'sm' });
-    this.categoryName.setValue(this.category.name);
-  }
 
   onSubmit() {
     this.category.name = this.categoryName.value;
@@ -37,7 +26,12 @@ export class EditCategoryComponent implements OnInit {
     this.dbService.updateCategory(this.category).subscribe(_ => {
       this.outputValues.emit(this.category);
     })
-    this.modalService.dismissAll();
+
+    setTimeout(() => {
+      this.dbService.notifyOther({refresh: true})}, 500
+      );
+
+    this.dialogRef.close();
 
   }
 

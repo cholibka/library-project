@@ -15,10 +15,8 @@
     <ng-container matColumnDef="manage">
       <th mat-header-cell *matHeaderCellDef scope="col"> Manage </th>
       <td mat-cell *matCellDef="let element"> 
-        <button mat-icon-button color="primary" (click)="edit.open_modal()"><mat-icon>edit</mat-icon></button>
-        <button mat-icon-button color="warn" (click)="deleteCat.open_modal()"><mat-icon>delete</mat-icon></button> 
-        <app-edit-category #edit [category]="element"></app-edit-category>
-        <app-delete-category #deleteCat [category]="element" (outputValues)="delete($event)"></app-delete-category>
+        <button mat-icon-button color="primary" (click)="openEdit(element)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="openDelete(element)"><mat-icon>delete</mat-icon></button> 
       </td>
     </ng-container>
     

@@ -26,6 +26,11 @@
     <mat-icon>favorite</mat-icon>
   </button>
 
+  <app-menu 
+      [options]="options$ | async"
+      (themeChange)="themeChangeHandler($event)">
+    </app-menu>
+
   <form [formGroup]="searchBook" (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" formControlName='query' >
     <button mat-icon-button type="submit"><mat-icon>search</mat-icon></button>

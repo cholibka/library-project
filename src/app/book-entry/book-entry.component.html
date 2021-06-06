@@ -19,12 +19,10 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-icon-button (click)="details.open_modal()"><mat-icon>details</mat-icon></button>
+        <button mat-icon-button (click)="openDetails()"><mat-icon>details</mat-icon></button>
         <button mat-icon-button color="primary" (click)="edit(book.id)"><mat-icon>edit</mat-icon></button>
-        <button mat-icon-button color="warn" (click)="delete.open_modal()"><mat-icon>delete</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="openDelete()"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>
 </mat-card>
 
-<app-book-details #details [book]="book"></app-book-details>
-<app-book-delete #delete [book]="book"></app-book-delete>
 

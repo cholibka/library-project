@@ -1,36 +1,32 @@
-<body>
-    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
-      <caption>Authors List</caption>
-      
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
+  <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+    <caption>Authors List</caption>
+    
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="surname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Surname </th>
-        <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="manage">
-        <th mat-header-cell *matHeaderCellDef scope="col"> Manage </th>
-        <td mat-cell *matCellDef="let element"> 
-          <button mat-icon-button color="primary" (click)="edit.open_modal()"><mat-icon>edit</mat-icon></button>
-          <button mat-icon-button color="warn" (click)="deleteAuth.open_modal()"><mat-icon>delete</mat-icon></button> 
-          <!-- (click)="delete(element.id) -->
-          <app-edit-author #edit [author]="element"></app-edit-author>
-          <app-delete-author #deleteAuth [author]="element" (outputValues)="delete($event)"></app-delete-author>
-        </td>
-      </ng-container>
-      
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
-    </table>
-  </body>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col"> Surname </th>
+      <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="manage">
+      <th mat-header-cell *matHeaderCellDef scope="col"> Manage </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-icon-button color="primary" (click)="openEdit(element)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="openDelete(element)"><mat-icon>delete</mat-icon></button> 
+      </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+  </table>
+
       
