@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Book, DbService } from '../db.service';
+import { map } from "rxjs/operators";
+
 
 @Component({
   selector: 'app-books-list',
@@ -39,6 +41,7 @@ export class BooksListComponent implements OnInit {
   mouseEnter(button: string) {
     let arrows = document.getElementsByTagName("mat-icon");
     let element = document.getElementById(button);
+    let timer = 1;
 
     this.checkBackgroundColor();
 
@@ -58,13 +61,37 @@ export class BooksListComponent implements OnInit {
       else {
         this.animateArrow(element!);
         setTimeout(() => {
-          element!.innerHTML = "arrow_downward"}, 500
-        );
+          element!.innerHTML = "arrow_downward";}, 500
+          );
+        timer = -1   
       }
     }
     else {
       this.resetArrow(element!);
     }
+
+    this.sortBooks(element!, button, timer)
+  }
+
+  sortBooks(element: HTMLElement, button: string, timer: number) {
+    if(element.style.color != "gray") {
+     this.sortOptions(button, timer)
+    } else 
+      this.data = this.dbService.getBooks();
+  }
+
+  sortOptions(button: string, timer: number) {
+      this.data = this.data.pipe(map((d) => {
+        d.sort((a, b) => {
+          if(button == "title")
+            return a.title <= b.title ? timer * (-1) : timer;
+          else if(button == "author")
+            return a.author.name <= b.author.name ? timer * (-1) : timer;
+          else 
+            return a.dateReleased <= b.dateReleased ? timer : timer * (-1);
+        })
+        return d;
+      }))
   }
 
   checkBackgroundColor() {
