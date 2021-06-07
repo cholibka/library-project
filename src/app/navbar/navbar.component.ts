@@ -1,13 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-<<<<<<< HEAD
-import { Book, DbService } from '../db.service';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-=======
 import { Book, DbService, Option } from '../db.service';
-import { Router, ActivatedRoute } from '@angular/router';
->>>>>>> themes
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -19,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   options$: Observable<Array<Option>> = this.dbService.getThemeOptions();
   books! : Observable<Book[]>;
-  searchBook = this.formBuilder.group({query: ''})
+  query = new FormControl('');
   lastUrl: string;
   url = '/home';
   prohibited: string[] = ['edit', 'add'];
@@ -55,6 +50,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onSubmit() : void {
-    this.router.navigate([`/${this.url}/`, this.searchBook.value.query]);
+    console.log(this.query.value)
+    this.router.navigate([`/${this.url}/`, this.query.value]);
   }
 }

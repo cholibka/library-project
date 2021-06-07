@@ -1,38 +1,88 @@
+<div class="example-container">
 
-<mat-toolbar color="primary">
-  <button mat-button [routerLink]="['/home']"><mat-icon>book</mat-icon> Books warehouse</button>
+  <mat-toolbar color="primary" class="mat-elevation-z10 example-toolbar">
+  
+    <button mat-icon-button (click)="sidenav.toggle()" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+  
+    <button mat-button [routerLink]="['/home']"><mat-icon>book</mat-icon> Books warehouse</button>
+    
+  
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button [matMenuTriggerFor]="menuBooks">Books</button>
+      <mat-menu #menuBooks="matMenu">
+          <button mat-menu-item [routerLink]="['/home']">Books List</button>
+          <button mat-menu-item [routerLink]="['/book/add']">Add new book</button>
+      </mat-menu>
+    
+      <button mat-button [matMenuTriggerFor]="menuCategories">Categories</button>
+      <mat-menu #menuCategories="matMenu">
+        <button mat-menu-item [routerLink]="['/categories']">Categories List</button>
+        <button mat-menu-item [routerLink]="['/category/add']">Add new category</button>
+      </mat-menu>
+    
+      <button mat-button [matMenuTriggerFor]="menuAuthors">Authors</button>
+      <mat-menu #menuAuthors="matMenu">
+        <button mat-menu-item [routerLink]="['/authors']">Authors List</button>
+        <button mat-menu-item [routerLink]="['/author/add']">Add new author</button>
+      </mat-menu>
+    </div>
+  
+      <span class="example-spacer"></span>
+    
+      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button> -->
+    
+      <app-menu 
+          [options]="options$ | async"
+          (themeChange)="themeChangeHandler($event)">
+        </app-menu>
+    
+        <form (ngSubmit)="onSubmit()">
+          <mat-form-field floatLabel="never">
+            <input matInput [formControl]='query' placeholder="Search...">
+            <button *ngIf="query.value" matSuffix mat-icon-button aria-label="Clear" (click)="query.setValue('')">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <button mat-icon-button><mat-icon>search</mat-icon></button>
+        </form>
 
-  <button mat-button [matMenuTriggerFor]="menuBooks">Books</button>
-  <mat-menu #menuBooks="matMenu">
-      <button mat-menu-item [routerLink]="['/home']">Books List</button>
-      <button mat-menu-item [routerLink]="['/book/add']">Add new book</button>
-  </mat-menu>
-
-  <button mat-button [matMenuTriggerFor]="menuCategories">Categories</button>
-  <mat-menu #menuCategories="matMenu">
-    <button mat-menu-item [routerLink]="['/categories']">Categories List</button>
-    <button mat-menu-item [routerLink]="['/category/add']">Add new category</button>
-  </mat-menu>
-
-  <button mat-button [matMenuTriggerFor]="menuAuthors">Authors</button>
-  <mat-menu #menuAuthors="matMenu">
-    <button mat-menu-item [routerLink]="['/authors']">Authors List</button>
-    <button mat-menu-item [routerLink]="['/author/add']">Add new author</button>
-  </mat-menu>
-
-  <span class="example-spacer"></span>
-
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-
-  <app-menu 
-      [options]="options$ | async"
-      (themeChange)="themeChangeHandler($event)">
-    </app-menu>
-
-  <form [formGroup]="searchBook" (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" formControlName='query' >
-    <button mat-icon-button type="submit"><mat-icon>search</mat-icon></button>
-  </form>
-  </mat-toolbar >
+  
+    </mat-toolbar>
+  
+  <mat-sidenav-container fxFlexFill class="example-sidenav-container">
+    <mat-sidenav #sidenav fxLayout="column" [mode]="'over'" [style.marginTop.px]="54">
+      <mat-list>
+        <div mat-subheader><mat-icon>book</mat-icon> Books</div>
+        <mat-list-item>
+          <button mat-button [routerLink]="['/home']" (click)="sidenav.toggle()">Books List</button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button [routerLink]="['/book/add']" (click)="sidenav.toggle()">Add new book</button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <div mat-subheader><mat-icon>category</mat-icon> Categories</div>
+        <mat-list-item>
+          <button mat-button [routerLink]="['/categories']" (click)="sidenav.toggle()">Categories List</button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button [routerLink]="['/category/add']" (click)="sidenav.toggle()">Add new category</button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <div mat-subheader><mat-icon>assignment_ind</mat-icon> Authors</div>
+        <mat-list-item>
+          <button mat-button [routerLink]="['/authors']" (click)="sidenav.toggle()">Authors List</button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button [routerLink]="['/author/add']" (click)="sidenav.toggle()">Add new author</button>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content [style.marginTop.px]="68">
+       <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -40,6 +40,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { StyleManagerService } from './style-manager.service';
 import { MenuComponent } from './menu/menu.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { MenuComponent } from './menu/menu.component';
     MatToolbarModule,
     MatSlideToggleModule,
     MatExpansionModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [DbService, StyleManagerService],
   bootstrap: [AppComponent]
