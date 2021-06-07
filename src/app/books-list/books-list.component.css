@@ -2,3 +2,81 @@
     margin-top: 10px;
     margin-left: 10px;
 }
+
+.sort {
+    text-align: center;
+    margin-top: 10px;
+}
+
+mat-icon {
+    font-size: 15px;
+}
+
+@-o-keyframes fadeIt {
+    0%   { color: gray; }
+    50%  { color: black; }
+    100% { color: black; }
+  }
+@keyframes fadeIt {
+    0%   { color: gray; }
+    50%  { color: black; }
+    100% { color: black; }
+}
+
+.colorAnimated{    
+    background-image:none !important; 
+        -o-animation: fadeIt 2s ease-in-out; 
+            animation: fadeIt 2s ease-in-out; 
+}
+
+@-o-keyframes fadeOut {
+    0%   { color: black; }
+    50%  { color: gray; }
+    100% { color: gray; }
+  }
+@keyframes fadeOut {
+    0%   { color: black; }
+    50%  { color: gray; }
+    100% { color: gray; }
+}
+
+.colorOutAnimated{    
+    background-image:none !important; 
+        -o-animation: fadeOut 2s ease-in-out; 
+            animation: fadeOut 2s ease-in-out; 
+}
+
+
+@-o-keyframes fadeItWhite {
+    0%   { color: gray; }
+    50%  { color: white; }
+    100% { color: white; }
+  }
+@keyframes fadeItWhite {
+    0%   { color: gray; }
+    50%  { color: white; }
+    100% { color: white; }
+}
+
+.colorWhiteAnimated{    
+    background-image:none !important; 
+        -o-animation: fadeItWhite 2s ease-in-out; 
+            animation: fadeItWhite 2s ease-in-out; 
+}
+
+@-o-keyframes fadeOutWhite {
+    0%   { color: white; }
+    50%  { color: gray; }
+    100% { color: gray; }
+  }
+@keyframes fadeOutWhite {
+    0%   { color: white; }
+    50%  { color: gray; }
+    100% { color: gray; }
+}
+
+.colorOutWhiteAnimated{    
+    background-image:none !important; 
+        -o-animation: fadeOutWhite 2s ease-in-out; 
+            animation: fadeOutWhite 2s ease-in-out; 
+}

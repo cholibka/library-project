@@ -1,3 +1,14 @@
+<div class="sort">
+  <p>
+    <strong>
+      Sort by:
+    </strong>
+    
+    <span (click)="mouseEnter('title')"> &nbsp; &nbsp; Title <mat-icon id="title" style="color: gray;">arrow_upward</mat-icon></span>
+    <span (click)="mouseEnter('author')"> &nbsp; &nbsp; Author <mat-icon id="author" style="color: gray;">arrow_upward</mat-icon></span>
+    <span (click)="mouseEnter('date')"> &nbsp; &nbsp; Date released <mat-icon id="date" style="color: gray;">arrow_upward</mat-icon></span>
+  </p>
+</div>
 <div class="divLayout">
   <div fxLayout="row wrap" fxLayoutGap="15px grid">
       <div *ngFor="let book of data | async">
