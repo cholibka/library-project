@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Book, DbService, Option } from '../db.service';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   books! : Observable<Book[]>;
   query = new FormControl('');
   lastUrl: string;
-  url = '/home';
+  url = 'home';
   prohibited: string[] = ['edit', 'add'];
   
 
@@ -27,14 +27,14 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe((val) => {
       if(val instanceof NavigationEnd){
         try {
-          this.url = val.url;
+          this.url = val.url.split("/")[1];
           if( this.prohibited.some((val) => { return this.url.includes(val); }) ){
             this.url = this.lastUrl;
           }
         }
         catch (error) 
         {
-          this.url = '/home';
+          this.url = 'home';
         }
       }
     });
@@ -50,7 +50,6 @@ export class NavbarComponent implements OnInit {
   }
 
   onSubmit() : void {
-    console.log(this.query.value)
     this.router.navigate([`/${this.url}/`, this.query.value]);
   }
 }
