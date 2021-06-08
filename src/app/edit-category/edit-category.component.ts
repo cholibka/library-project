@@ -16,6 +16,7 @@ export class EditCategoryComponent {
   categoryName = new FormControl('');
   
   constructor(public dialogRef: MatDialogRef<EditCategoryComponent>, @Inject(MAT_DIALOG_DATA) public category: Category, private dbService: DbService) { 
+    this.categoryName.setValue(category.name)
   }
   
 
