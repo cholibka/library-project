@@ -19,9 +19,10 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-icon-button (click)="openDetails()"><mat-icon>details</mat-icon></button>
-        <button mat-icon-button color="primary" (click)="edit(book.id)"><mat-icon>edit</mat-icon></button>
-        <button mat-icon-button color="warn" (click)="openDelete()"><mat-icon>delete</mat-icon></button>
+        <button mat-icon-button (click)="sendToLibrary()" matTooltip="Send to library"><mat-icon>send</mat-icon></button>
+        <button mat-icon-button (click)="openDetails()" matTooltip="Details"><mat-icon>details</mat-icon></button>
+        <button mat-icon-button (click)="edit(book.id)" matTooltip="Edit"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="openDelete()" matTooltip="Delete"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>
 </mat-card>
 

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Sending <strong>{{book.title}}</strong>...</h1>
+<div mat-dialog-content>
+    <p>
+        <strong>Current quantity: </strong> {{book.quantity}}
+    </p>
+    <form (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>
+                Amount
+            </mat-label>
+            <input matInput required type="number" [formControl]="amount">
+        </mat-form-field>
+        <div>
+            <button mat-raised-button color="primary" [disabled]="!amount.valid">Submit</button>
+            <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+        </div>
+    </form>
+</div>
+

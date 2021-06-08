@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BookDetailsComponent } from '../book-details/book-details.component';
 import { BookDeleteComponent } from '../book-delete/book-delete.component';
+import { SendBookComponent } from '../send-book/send-book.component';
 
 @Component({
   selector: 'app-book-entry',
@@ -16,8 +17,15 @@ export class BookEntryComponent {
 
   constructor(private dialog: MatDialog, private router: Router ) {}
 
-  openDetails(): void {
+  sendToLibrary(): void {
     console.log(this.book)
+    this.dialog.open(SendBookComponent, {
+      panelClass: "dialog-responsive",
+      data: this.book
+    });
+  }
+
+  openDetails(): void {
     this.dialog.open(BookDetailsComponent, {
       panelClass: "dialog-details-responsive",
       data: this.book
@@ -25,7 +33,6 @@ export class BookEntryComponent {
   }
 
   openDelete(): void {
-    console.log(this.book)
     this.dialog.open(BookDeleteComponent, {
       panelClass: "dialog-responsive",
       data: this.book

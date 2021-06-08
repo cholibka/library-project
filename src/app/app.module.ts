@@ -42,6 +42,8 @@ import { StyleManagerService } from './style-manager.service';
 import { MenuComponent } from './menu/menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SendBookComponent } from './send-book/send-book.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { MatListModule } from '@angular/material/list';
     DeleteAuthorComponent,
     DeleteCategoryComponent,
     MenuComponent,
+    SendBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ import { MatListModule } from '@angular/material/list';
     MatExpansionModule,
     MatMenuModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatTooltipModule
   ],
   providers: [DbService, StyleManagerService],
   bootstrap: [AppComponent]
