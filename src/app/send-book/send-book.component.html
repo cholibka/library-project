@@ -9,6 +9,7 @@
                 Amount
             </mat-label>
             <input matInput required type="number" [formControl]="amount">
+            <mat-error *ngIf="amount.invalid">Amount must be between 0 and {{book.quantity}}</mat-error>
         </mat-form-field>
         <div>
             <button mat-raised-button color="primary" [disabled]="!amount.valid">Submit</button>
