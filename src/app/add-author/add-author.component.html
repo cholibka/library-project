@@ -6,12 +6,14 @@
                     Name:
                 </mat-label>
                 <input matInput required type="text" formControlName="name">
+                <mat-error *ngIf="authorForm.get('name')">Only letters and space!</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>
                     Surname:
                 </mat-label>
                 <input matInput required type="text" formControlName="surname">
+                <mat-error *ngIf="authorForm.get('surname')">Only letters and space!</mat-error>
             </mat-form-field>
             <button mat-raised-button color="primary" [disabled]="!authorForm.valid">Submit</button>
         </form>

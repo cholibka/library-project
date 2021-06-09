@@ -16,8 +16,8 @@ export class AddAuthorComponent implements OnInit {
   @Output() outputValues: EventEmitter<Author> = new EventEmitter();
   
   authorForm = this.formBuilder.group({
-    name: new FormControl('', Validators.required),
-    surname: new FormControl('', Validators.required)
+    name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
+    surname: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)])
   })
   
   constructor(private dbService: DbService,  private formBuilder: FormBuilder, private router: Router) {

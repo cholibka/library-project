@@ -17,13 +17,13 @@ export class AddBookComponent implements OnInit {
   Authors!: Author[];
   
   bookForm = this.formBuilder.group({
-    ISBN: new FormControl('', Validators.required),
-    title: new FormControl('', Validators.required),
+    ISBN: new FormControl('', [Validators.required, Validators.min(1000000000000), Validators.max(9999999999999), Validators.pattern("^[0-9]*$")]),
+    title: new FormControl('', [Validators.pattern('^[a-zA-Z ]*$'), Validators.maxLength(50)]),
     author: new FormControl('', Validators.required),
-    dateReleased: new FormControl('', Validators.required),
+    dateReleased: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.max(new Date().getFullYear())]),
     description: new FormControl('', Validators.required),
     categories: new FormControl('', Validators.required),
-    quantity: new FormControl('', Validators.required)
+    quantity: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)])
   })
   
   constructor(private dbService: DbService, private formBuilder: FormBuilder, private router: Router) {

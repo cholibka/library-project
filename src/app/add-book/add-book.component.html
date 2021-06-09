@@ -9,14 +9,16 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>ISBN</mat-label>
-                <input matInput required formControlName="ISBN" type="number">    
+                <input matInput required formControlName="ISBN" type="number"> 
+                <mat-error *ngIf="bookForm.get('ISBN')">Only numbers! Must be 13 digits!</mat-error>
             </mat-form-field>
 
             <br/>
 
             <mat-form-field appearance="fill">
                 <mat-label>Title</mat-label>
-                <input matInput required formControlName="title" type="text">    
+                <input matInput required formControlName="title" type="text">   
+                <mat-error *ngIf="bookForm.get('title')">Only letters and space!</mat-error>
             </mat-form-field>
         
             <br/>
@@ -27,7 +29,9 @@
                     <mat-option *ngFor="let author of Authors" [value]="author">
                         {{author.name}} {{author.surname}}
                     </mat-option> 
-                </mat-select>   
+                </mat-select> 
+                <mat-error *ngIf="bookForm.get('author')">Please select author!</mat-error>
+
             </mat-form-field>
         
             
@@ -35,7 +39,8 @@
         
             <mat-form-field appearance="fill">
                 <mat-label>Date Released</mat-label>
-                <input matInput required formControlName="dateReleased" type="number">    
+                <input matInput required formControlName="dateReleased" type="number"> 
+                <mat-error *ngIf="bookForm.get('dateReleased')">Only numbers! Enter correct date!</mat-error>
             </mat-form-field>
         
             <br/>
@@ -43,6 +48,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
                 <textarea matInput required formControlName="description" type="text" rows="5"></textarea>
+                <mat-error *ngIf="bookForm.get('description')">Please enter description!</mat-error>
             </mat-form-field>
         
             <br/>
@@ -54,13 +60,16 @@
                         {{category.name}}
                     </mat-option>
                 </mat-select>
+                <mat-error *ngIf="bookForm.get('categories')">Please select category!</mat-error>
+
             </mat-form-field>
         
             <br/>
         
             <mat-form-field appearance="fill">
                 <mat-label>Quantity</mat-label>
-                <input matInput required formControlName="quantity" type="number">    
+                <input matInput required formControlName="quantity" type="number">  
+                <mat-error *ngIf="bookForm.get('quantity')">Please enter quantity! Must be more than 0</mat-error>
             </mat-form-field>
         
             <br/>
