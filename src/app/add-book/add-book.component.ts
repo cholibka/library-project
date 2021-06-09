@@ -52,7 +52,10 @@ export class AddBookComponent implements OnInit {
     this.dbService.addBook(this.book).subscribe(_ => {
       this.outputValues.emit(this.book);
     });
-
+    
+    setTimeout(() => {
+      this.dbService.notifyOther({refresh: true})}, 500
+      );
     this.router.navigate(['/home']);
   }
 

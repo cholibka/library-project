@@ -1,70 +1,190 @@
 {
   "books": [
     {
-      "id": 9780345507006,
-      "title": "AAAAAAAAAAAAA",
+      "id": 9780805094596,
+      "title": "Shadow and Bone",
       "author": {
         "id": 1,
-        "name": "Jerzy",
-        "surname": "Jeżyk"
+        "name": "Leigh",
+        "surname": "Bardugo"
       },
-      "dateReleased": 2020,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "dateReleased": 2012,
+      "description": "Orphaned by the Border Wars, Alina Starkov is taken from obscurity and her only friend, Mal, to become the protegé of the mysterious Darkling, who trains her to join the magical elite in the belief that she is the Sun Summoner, who can destroy the monsters of the Fold.",
       "categories": [
         {
-          "id": 2,
-          "name": "Romans"
-        },
-        {
-          "id": 3,
-          "name": "Komedia"
+          "id": 4,
+          "name": "Fantasy"
         }
       ],
-      "quantity": 90
+      "quantity": 69
     },
     {
-      "id": 2,
-      "title": "Cień i kość",
+      "id": 9781250618979,
+      "title": "King of Scars",
       "author": {
-        "id": 2,
+        "id": 1,
         "name": "Leigh",
         "surname": "Bardugo"
       },
       "dateReleased": 2019,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "description": "The dashing young king, Nikolai Lantsov, has always had a gift for the impossible. No one knows what he endured in his country's bloody civil war--and he intends to keep it that way. Now, as enemies gather at his weakened borders, Nikolai must find a way to refill Ravka's coffers, forge new alliances, and stop a rising threat to the once-great Grisha Army.",
       "categories": [
         {
           "id": 2,
-          "name": "Romans"
+          "name": "Romance"
         },
         {
-          "id": 3,
-          "name": "Komedia"
+          "id": 4,
+          "name": "Fantasy"
+        }
+      ],
+      "quantity": 420
+    },
+    {
+      "id": 9781627792127,
+      "title": "Six of Crows",
+      "author": {
+        "id": 1,
+        "name": "Leigh",
+        "surname": "Bardugo"
+      },
+      "dateReleased": 2011,
+      "description": "Six dangerous outcasts. One impossible heist. Kaz’s crew is the only thing that might stand between the world and destruction—if they don’t kill each other first.",
+      "categories": [
+        {
+          "id": 4,
+          "name": "Fantasy"
+        }
+      ],
+      "quantity": 45
+    },
+    {
+      "id": 9780743424424,
+      "title": "The Shining",
+      "author": {
+        "id": 2,
+        "name": "Stephen",
+        "surname": "King"
+      },
+      "dateReleased": 1977,
+      "description": "Jack Torrance, his wife Wendy, and their young son Danny move into the Overlook Hotel, where Jack has been hired as the winter caretaker. Cut off from civilization for months, Jack hopes to battle alcoholism and uncontrolled rage while writing a play. Evil forces residing in the Overlook – which has a long and violent history – covet young Danny for his precognitive powers and exploit Jack’s weaknesses to try to claim the boy.",
+      "categories": [
+        {
+          "id": 1,
+          "name": "Horror"
+        },
+        {
+          "id": 6,
+          "name": "Thriller"
         }
       ],
       "quantity": 80
     },
     {
-      "id": 1111111111,
-      "title": "Barbie in the 12 Dancing Princesses",
+      "id": 9780451153555,
+      "title": "Misery",
       "author": {
-        "id": 1,
-        "name": "Jerzy",
-        "surname": "Jeżyk"
+        "id": 2,
+        "name": "Stephen",
+        "surname": "King"
       },
-      "dateReleased": 2021,
-      "description": "AAAAAAAAAAAAA AAAAAAAAAAAA",
+      "dateReleased": 1987,
+      "description": "Novelist Paul Sheldon has plans to make the difficult transition from writing historical romances featuring heroine Misery Chastain to publishing literary fiction. Annie Wilkes, Sheldon's number one fan, rescues the author from the scene of a car accident. The former nurse takes care of him in her remote house, but becomes irate when she discovers that the author has killed Misery off in his latest book. Annie keeps Sheldon prisoner while forcing him to write a book that brings Misery back to life.",
       "categories": [
         {
-          "id": 2,
-          "name": "Romans"
+          "id": 1,
+          "name": "Horror"
         },
         {
-          "id": 3,
-          "name": "Komedia"
+          "id": 6,
+          "name": "Thriller"
         }
       ],
-      "quantity": 20
+      "quantity": 200
+    },
+    {
+      "id": 9782277118350,
+      "title": "Carrie",
+      "author": {
+        "id": 2,
+        "name": "Stephen",
+        "surname": "King"
+      },
+      "dateReleased": 1974,
+      "description": "The story of misfit high-school girl, Carrie White, who gradually discovers that she has telekinetic powers. Repressed by a domineering, ultra-religious mother and tormented by her peers at school, her efforts to fit in lead to a dramatic confrontation during the senior prom.",
+      "categories": [
+        {
+          "id": 1,
+          "name": "Horror"
+        },
+        {
+          "id": 6,
+          "name": "Thriller"
+        }
+      ],
+      "quantity": 220
+    },
+    {
+      "id": 9788374959056,
+      "title": "Nineteen Eighty Four",
+      "author": {
+        "id": 3,
+        "name": "George",
+        "surname": "Orwell"
+      },
+      "dateReleased": 1984,
+      "description": "Which One Will YOU Be IN the Year 1984?\n\nThere won't be much choice, of course, if this book's predictions turn out to be true. But you'll probably become one of the following four types:\n\nProletarian--Considered inferior and kept in total ignorance, you'll be fed lies from the Ministry of Truth, eliminated upon signs of promise or ability!\n\nPolice Guard--Chosen for lack of intelligence but superiour brown, you'll be suspicious of everyone and be ready to give your life for Big Brother, the leader you've never even seen!\n\nParty Member--Male--Face-less, mind-less, a flesh-and-blood robot with a push-button brain, you're denied love by law, taught hate by the flick of a switch!\n\nParty Member--Female--A member of the Anti-Sex League from birth, your duty will be to smother all human emotion, and your children might not be your husband's!\n\nUnbelievable? You'll feel differently after you've read this best-selling book of forbidden love and terror in a world many of us may live to see!",
+      "categories": [
+        {
+          "id": 4,
+          "name": "Fantasy"
+        },
+        {
+          "id": 6,
+          "name": "Thriller"
+        }
+      ],
+      "quantity": 1984
+    },
+    {
+      "id": 9781502492791,
+      "title": "Animal farm",
+      "author": {
+        "id": 3,
+        "name": "George",
+        "surname": "Orwell"
+      },
+      "dateReleased": 2015,
+      "description": "Animal Farm is a brilliant political satire and a powerful and affecting story of revolutions and idealism, power and corruption. 'All animals are equal. But some animals are more equal than others.' Mr Jones of Manor Farm is so lazy and drunken that one day he forgets to feed his livestock. The ensuing rebellion under the leadership of the pigs Napoleon and Snowball leads to the animals taking over the farm. Vowing to eliminate the terrible inequities of the farmyard, the renamed Animal Farm is organised to benefit all who walk on four legs. But as time passes, the ideals of the rebellion are corrupted, then forgotten. And something new and unexpected emerges...",
+      "categories": [
+        {
+          "id": 7,
+          "name": "Fiction"
+        }
+      ],
+      "quantity": 515
+    },
+    {
+      "id": 9780141187372,
+      "title": "Homage to Catalonia",
+      "author": {
+        "id": 3,
+        "name": "George",
+        "surname": "Orwell"
+      },
+      "dateReleased": 1938,
+      "description": "Homage to Catalonia is George Orwell's account of his experiences fighting in the 'Spanish Civil War'. Alongside many British workers, trades unionists, and socialists keen to help the Spanish defend their Republic from General Franco's Fascist forces. Orwell joined the POUM Militia in the Catalan region of Spain, was injured in the fighting and invalided back to England. After leaving the front line preparatory to leaving Spain, Orwell saw for himself the machinations of the Communist Party leading to the POUM being declared 'Enemies of the People' along with its destruction. Which he expresses in his companion piece the Essay Looking back on the Spanish War. These are fuller descriptions of events culled from direct experience, than many especially current misrepresentations of the Spanish Conflict.\nEnglish film director Ken Loach made a landmark film Land and Freedom of the Spanish anti fascist struggle with many similarities to George Orwell's story including that of perspective. The book and film can be appreciated in their own right or as companion pieces.",
+      "categories": [
+        {
+          "id": 8,
+          "name": "Biography"
+        },
+        {
+          "id": 9,
+          "name": "History"
+        }
+      ],
+      "quantity": 55
     }
   ],
   "categories": [
@@ -74,11 +194,11 @@
     },
     {
       "id": 2,
-      "name": "Romans"
+      "name": "Romance"
     },
     {
       "id": 3,
-      "name": "Komedia"
+      "name": "Comedy"
     },
     {
       "id": 4,
@@ -86,27 +206,38 @@
     },
     {
       "id": 5,
-      "name": "Poezja"
+      "name": "Poetry"
+    },
+    {
+      "id": 6,
+      "name": "Thriller"
+    },
+    {
+      "id": 7,
+      "name": "Fiction"
+    },
+    {
+      "id": 8,
+      "name": "Biography"
+    },
+    {
+      "id": 9,
+      "name": "History"
     }
   ],
   "authors": [
     {
       "id": 1,
-      "name": "Jerzy",
-      "surname": "Jeżyk"
-    },
-    {
-      "id": 2,
       "name": "Leigh",
       "surname": "Bardugo"
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Stephen",
       "surname": "King"
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "George",
       "surname": "Orwell"
     }
