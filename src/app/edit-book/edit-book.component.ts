@@ -21,12 +21,12 @@ export class EditBookComponent implements OnInit {
   @Output() outputValues: EventEmitter<Book> = new EventEmitter();
 
   bookForm = this.formBuilder.group({
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.pattern('^[a-zA-ZżŻĄĆŹĘÓóźćąęŚś ]*$'), Validators.maxLength(50)]),
     author: new FormControl('', Validators.required),
-    dateReleased: new FormControl('', Validators.required),
+    dateReleased: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.max(new Date().getFullYear())]),
     description: new FormControl('', Validators.required),
     categories: new FormControl('', Validators.required),
-    quantity: new FormControl('', Validators.required)
+    quantity: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)])
   })
 
   constructor(private route: ActivatedRoute, private router: Router, private dbService: DbService, private formBuilder: FormBuilder) {

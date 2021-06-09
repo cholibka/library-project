@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, Output, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Category, DbService } from '../db.service';
 
@@ -13,8 +13,8 @@ export class EditCategoryComponent {
   @ViewChild('content') content!: TemplateRef<any>;
   @Output() outputValues: EventEmitter<Category> = new EventEmitter();
 
-  categoryName = new FormControl('');
-  
+  categoryName = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZżŻĄĆŹĘÓóźćąęŚś]*$'), Validators.maxLength(50)]);
+
   constructor(public dialogRef: MatDialogRef<EditCategoryComponent>, @Inject(MAT_DIALOG_DATA) public category: Category, private dbService: DbService) { 
     this.categoryName.setValue(category.name)
   }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category, DbService } from '../db.service';
 
@@ -15,7 +15,7 @@ export class AddCategoryComponent implements OnInit {
   @ViewChild('content') content!: TemplateRef<any>;
   @Output() outputValues: EventEmitter<Category> = new EventEmitter();
   
-  categoryName = new FormControl('');
+  categoryName = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZżŻĄĆŹĘÓóźćąęŚś]*$'), Validators.maxLength(50)]);
   
   constructor(private dbService: DbService, private router: Router) { 
     dbService.getCategories().subscribe(categories => {

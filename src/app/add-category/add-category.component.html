@@ -7,6 +7,7 @@
                     Category name:
                 </mat-label>
                 <input matInput required type="text" [formControl]="categoryName" >
+                <mat-error *ngIf="categoryName.invalid">Only letters!</mat-error>
             </mat-form-field>
             <br/>
             <button mat-raised-button color="primary" [disabled]="!categoryName.valid">Submit</button>
