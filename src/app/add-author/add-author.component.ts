@@ -36,8 +36,10 @@ export class AddAuthorComponent implements OnInit {
       this.outputValues.emit(this.author);
     })
     
+    setTimeout(() => {
+      this.dbService.notifyOther({refresh: true})}, 500
+      );
     this.router.navigate(['/authors']);
-
   }
 
 }

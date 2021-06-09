@@ -1,18 +1,23 @@
 button {
     float: right;
- }
+}
 
- mat-card {
-     width: 20%;
- }
+mat-card {
+    width: 20%;
+}
 
- .main{
+.main{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  mat-form-field {
-      width: 100%;
-  }
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-title, mat-card-subtitle {
+    text-align: center;
+    margin-bottom: 5%;
+}
