@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, TemplateRef, Output, EventEmitter,
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Author, DbService } from '../db.service';
+import { Author, Book, DbService } from '../db.service';
 
 @Component({
   selector: 'app-edit-author',
@@ -13,6 +13,8 @@ export class EditAuthorComponent {
 
   @ViewChild('content') content!: TemplateRef<any>;
   @Output() outputValues: EventEmitter<Author> = new EventEmitter();
+  @Output() outputBook: EventEmitter<Book> = new EventEmitter();
+
   
   authorForm = this.formBuilder.group({
     name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZżŻĄĆŹĘÓóźćąęŚś ]*$'), Validators.maxLength(50)]),
@@ -30,6 +32,17 @@ export class EditAuthorComponent {
 
     this.dbService.updateAuthors(this.author).subscribe(_ => {
       this.outputValues.emit(this.author);
+    })
+
+    this.dbService.getBooks().subscribe(books => {
+      books.forEach(book => {
+        if(book.author.id == this.author.id) {
+          book.author = this.author;
+          this.dbService.updateBook(book).subscribe(_ => {
+            this.outputBook.emit(book);
+          })
+        }
+      });
     })
     
     setTimeout(() => {
