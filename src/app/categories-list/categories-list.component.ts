@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category, DbService } from '../db.service';
+import { Book, Category, DbService } from '../db.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +21,8 @@ export class CategoriesListComponent implements AfterViewInit {
   dataSource = new MatTableDataSource(this.categories);
 
   @Output() deleteCategory: EventEmitter<Category> = new EventEmitter();
+  @Output() outputBook: EventEmitter<Book> = new EventEmitter();
+
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -69,6 +71,18 @@ export class CategoriesListComponent implements AfterViewInit {
         this.dbService.deleteCategory(c!.id).subscribe(_ => 
           this.deleteCategory.emit(c));
 
+        this.dbService.getBooks().subscribe(books => {
+          books.forEach(book => {
+            for(var i = 0; i < book.categories.length; i++) {
+              if(book.categories[i].id == c!.id) {
+                book.categories.splice(i, 1);
+                this.dbService.updateBook(book).subscribe(_ => {
+                  this.outputBook.emit(book);
+                })
+              }
+            }
+          });
+        })
         this.dataSource._updateChangeSubscription();
       }
     })

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from '@angu
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { Author, DbService } from '../db.service';
+import { Author, Book, DbService } from '../db.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteAuthorComponent } from '../delete-author/delete-author.component';
 import { EditAuthorComponent } from '../edit-author/edit-author.component';
@@ -19,6 +19,8 @@ export class AuthorsListComponent implements AfterViewInit {
   dataSource = new MatTableDataSource(this.authors);
 
   @Output() deleteAuthor: EventEmitter<Author> = new EventEmitter();
+  @Output() outputBook: EventEmitter<Book> = new EventEmitter();
+
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -70,6 +72,17 @@ export class AuthorsListComponent implements AfterViewInit {
         this.dbService.deleteAuthor(a!.id).subscribe(_ => 
           this.deleteAuthor.emit(a));
 
+        this.dbService.getBooks().subscribe(books => {
+          books.forEach(book => {
+            if(book.author.id == a!.id) {
+              book.author.name = "Gall";
+              book.author.surname = "Anonim";
+              this.dbService.updateBook(book).subscribe(_ => {
+                this.outputBook.emit(book);
+              })
+            }
+          });
+        })
         this.dataSource._updateChangeSubscription();
       }
     })
